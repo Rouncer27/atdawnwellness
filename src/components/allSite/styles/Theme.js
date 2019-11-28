@@ -1,0 +1,26 @@
+const theme = {
+  colorPrim: "#437A7E",
+  colorSec: "#6AACAC",
+  colorTert: "#505B61",
+  colorAcc: "#BCD5C2",
+  colorSec1: "#B7AA9B",
+  colorSec2: "#D8E3E9",
+  colorSec3: "#A5C0C4",
+  white: "#fff",
+  grey: "#65646A",
+  black: "#000",
+  strongred: "#f00",
+  maxWidth: "1000px",
+  baseLineHeight: "1.5",
+  bpTablet: "768px",
+  bpDesksm: "1025px",
+  bpDeskmd: "1200px",
+  bpDesklg: "1600px",
+  bpMax: "1900px",
+  fontPrim: "Open Sans",
+  fontSec: "Playfair Display",
+  fontTer: "Liu Jian Mao Cao",
+  fontAwesome: "FontAwesome",
+}
+
+export default theme
