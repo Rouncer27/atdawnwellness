@@ -6,7 +6,7 @@ import { ThemeProvider } from "styled-components"
 import theme from "./allSite/styles/Theme"
 import GlobalStyle from "./allSite/styles/Golbal"
 import Header from "./allSite/header"
-import Footer from "./allSite/footer"
+import Footer from "./allSite/Footer"
 
 const Layout = ({ children, location }) => {
   const data = useStaticQuery(graphql`
