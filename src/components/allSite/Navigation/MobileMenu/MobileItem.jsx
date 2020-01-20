@@ -40,13 +40,30 @@ const MobileItemStyled = styled.li`
 `
 
 const MobileItem = props => {
-  const { object_slug, title, location, wordpress_children } = props
+  const {
+    object_slug,
+    title,
+    location,
+    wordpress_children,
+    target,
+    type,
+    url,
+  } = props
   const currentPageSlug = object_slug === "home" ? "/" : `/${object_slug}`
   const isCurrent = currentPageSlug === location ? true : false
 
   return (
     <MobileItemStyled isCurrent={isCurrent}>
-      <Link to={object_slug === "home" ? "/" : `/${object_slug}`}>{title}</Link>
+      {type === "custom" ? (
+        <a target={target} href={url}>
+          <span>{title}</span>
+        </a>
+      ) : (
+        <Link to={object_slug === "home" ? "/" : `/${object_slug}`}>
+          {title}
+        </Link>
+      )}
+
       {wordpress_children !== null &&
         wordpress_children !== undefined &&
         wordpress_children.length > 0 && (

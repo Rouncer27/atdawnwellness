@@ -3,7 +3,7 @@ import { fonts, fontSizer } from "./index"
 
 export const bodyCopy = `
   ${fontSizer(1.6, 1.8, 76.8, 150, 1.6)};
-  color: ${colors.grey};
+  color: ${colors.colorTert};
   font-family: ${fonts.fontPrimary};
   font-weight: normal;
   font-style: normal;

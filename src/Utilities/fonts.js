@@ -1,5 +1,6 @@
-export const fontPrimary = "Montserrat"
-export const fontSecondary = "Lora"
+export const fontPrimary = "Open Sans"
+export const fontSecondary = "Playfair Display"
+export const fontTert = "Liu Jian Mao Cao"
 export const fontAwesome = "FontAwesome"
 
 export const fontSizer = (
@@ -28,5 +29,6 @@ export const fontSizer = (
 export default {
   fontPrimary,
   fontSecondary,
+  fontTert,
   fontAwesome,
 }

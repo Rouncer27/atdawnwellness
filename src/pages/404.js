@@ -2,8 +2,8 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/allSite/seo/seo"
 
-const NotFoundPage = () => (
-  <Layout>
+const NotFoundPage = props => (
+  <Layout location={props.location.pathname}>
     <SEO title="404: Not found" />
     <h1>NOT FOUND</h1>
     <p>You just hit a route that doesn&#39;t exist... the sadness.</p>

@@ -2,37 +2,29 @@ import { colors } from "./index"
 import { fonts, fontSizer } from "./index"
 
 export const buttonOne = `
-  ${fontSizer(1.2, 1.4, 76.8, 110, 1.8)};
+  ${fontSizer(1.6, 1.8, 76.8, 150, 1.8)};
   display: inline-block;
-  position: relative;
   min-width: 18rem;
-  padding: 2rem 3rem;
+  padding: 1rem 4rem;
   transition: all 0.3s ease;
   border: none;
   box-shadow: none;
-  color: ${colors.colorPrimary};
+  background: ${colors.colorPrimary};
+  color: ${colors.white};
   font-family: ${fonts.fontPrimary};
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.5;
+  font-weight: normal;
+  line-height: 1.25;
   letter-spacing: normal;
   text-align: center;
 
   @media(min-width: 768px) {
-    line-height: 2;
-  }
-
-  &::before {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: ${fonts.fontAwesome};
-    font-size: 0.75em;
-    content: "\f054";
+    line-height: 1.25;
   }
 
   &:hover {
+    background: ${colors.colorSecondary};
     color: ${colors.colorTertiary};
     cursor: pointer;
   }

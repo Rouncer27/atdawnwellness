@@ -30,8 +30,8 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        baseUrl: "atdawnmassage.swbdatabases.ca",
-        protocol: "https",
+        baseUrl: "localhost/atdawnwellness",
+        protocol: "http",
         hostingWPCOM: false,
         useACF: true,
         includedRoutes: [
@@ -41,6 +41,7 @@ module.exports = {
           "**/pages",
           "**/wp-api-menus/v2",
           "**/wp-api-menus/v2/menus",
+          "**/testimonials",
         ],
       },
     },

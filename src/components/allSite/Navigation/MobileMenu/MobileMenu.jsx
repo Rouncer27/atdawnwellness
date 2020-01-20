@@ -20,7 +20,6 @@ const NavMobileStyled = styled.div`
 
   .mobile-nav {
     position: relative;
-
     z-index: 9999999;
 
     &__drawer {
@@ -34,7 +33,7 @@ const NavMobileStyled = styled.div`
       width: 100%;
       height: 100vh;
       transform: translateX(-100%);
-      background: ${props => props.theme.white};
+      background: ${props => props.theme.colorSec3};
       border: 0.25rem solid ${props => props.theme.colorPrim};
       overflow-y: scroll;
 
@@ -49,7 +48,7 @@ const NavMobileStyled = styled.div`
 
     .mobile-nav__button {
       color: ${props =>
-        props.isOpen ? props.theme.colorPrim : props.theme.white};
+        props.isOpen ? props.theme.colorAcc : props.theme.white};
 
       &::before {
         top: ${props => (props.isOpen ? "50%" : "1rem")};
@@ -91,6 +90,9 @@ const MobileMenu = ({ location }) => {
               wordpress_id
               title
               object_slug
+              target
+              type
+              url
             }
           }
         }

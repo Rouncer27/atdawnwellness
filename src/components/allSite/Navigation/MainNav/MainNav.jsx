@@ -5,19 +5,51 @@ import styled from "styled-components"
 
 import MainNavItem from "./MainNavItem"
 import SocialFollow from "../../SocialMedia/SocialFollow"
+import { colors } from "../../../../Utilities"
 
 const MainNavStyled = styled.nav`
   position: relative;
+  padding: 2.5rem 0;
+  background-color: ${colors.colorPrimary};
+
+  @media (min-width: 768px) {
+    padding: 2.5rem 0 0;
+    background-color: ${colors.colorPrimary};
+  }
+
+  @media (min-width: 1025px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    background-color: transparent;
+    z-index: 10;
+  }
+`
+
+const MenuWrapper = styled.div`
+  display: none;
+  align-self: flex-start;
+  background-color: ${colors.colorPrimary};
 
   @media (min-width: 768px) {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    position: relative;
     width: 100%;
-    margin: 0 auto;
-    padding: 0 2rem;
-    z-index: 10;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  @media (min-width: 1025px) {
+    width: 80%;
+    padding: 1rem;
   }
 `
 
@@ -33,7 +65,9 @@ const MainNavUl = styled.ul`
   }
 
   @media (min-width: 1025px) {
-    width: 70%;
+    justify-content: flex-start;
+    width: 80%;
+    padding-left: 5rem;
   }
 `
 
@@ -50,8 +84,9 @@ const MainLogo = styled.div`
   }
 
   @media (min-width: 1025px) {
-    width: 15%;
-    padding: 2rem;
+    width: 20%;
+    max-width: 27.5rem;
+    padding: 2rem 2rem;
     margin: 0 auto;
   }
 
@@ -76,7 +111,7 @@ const SocialMedia = styled.div`
   }
 
   @media (min-width: 1025px) {
-    width: 15%;
+    width: 20%;
     margin-top: 0;
     padding: 2rem;
   }
@@ -92,6 +127,9 @@ const MainNav = ({ siteTitle, location }) => {
               wordpress_id
               title
               object_slug
+              target
+              type
+              url
             }
           }
 
@@ -132,14 +170,18 @@ const MainNav = ({ siteTitle, location }) => {
                 />
               </Link>
             </MainLogo>
-            <MainNavUl>
-              {menuItems.map((item, index) => {
-                return <MainNavItem key={index} {...item} location={location} />
-              })}
-            </MainNavUl>
-            <SocialMedia>
-              <SocialFollow icons={socialIcons} />
-            </SocialMedia>
+            <MenuWrapper>
+              <MainNavUl>
+                {menuItems.map((item, index) => {
+                  return (
+                    <MainNavItem key={index} {...item} location={location} />
+                  )
+                })}
+              </MainNavUl>
+              <SocialMedia>
+                <SocialFollow icons={socialIcons} />
+              </SocialMedia>
+            </MenuWrapper>
           </MainNavStyled>
         )
       }}

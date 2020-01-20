@@ -12,7 +12,7 @@ const MobileButton = styled.button`
   height: 5.5rem;
   margin: 0 auto;
   padding: 0;
-  background: ${props => props.theme.colorPrim};
+  background: ${props => props.theme.colorAcc};
   border: 0.1rem solid ${props => props.theme.white};
   box-shadow: 0.25rem 0.25rem 0.5rem 0rem rgba(0, 0, 0, 0.5);
   text-align: center;
