@@ -10,11 +10,9 @@ import { colors } from "../../../../Utilities"
 const MainNavStyled = styled.nav`
   position: relative;
   padding: 2.5rem 0;
-  background-color: ${colors.colorPrimary};
 
   @media (min-width: 768px) {
     padding: 2.5rem 0 0;
-    background-color: ${colors.colorPrimary};
   }
 
   @media (min-width: 1025px) {
@@ -48,8 +46,18 @@ const MenuWrapper = styled.div`
   }
 
   @media (min-width: 1025px) {
-    width: 80%;
+    width: 75%;
     padding: 1rem;
+  }
+
+  .inner-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 95rem;
+    margin-right: auto;
+    margin-left: 0;
   }
 `
 
@@ -84,9 +92,9 @@ const MainLogo = styled.div`
   }
 
   @media (min-width: 1025px) {
-    width: 20%;
+    width: 25%;
     max-width: 27.5rem;
-    padding: 2rem 2rem;
+    padding: 2rem 4rem;
     margin: 0 auto;
   }
 
@@ -171,16 +179,18 @@ const MainNav = ({ siteTitle, location }) => {
               </Link>
             </MainLogo>
             <MenuWrapper>
-              <MainNavUl>
-                {menuItems.map((item, index) => {
-                  return (
-                    <MainNavItem key={index} {...item} location={location} />
-                  )
-                })}
-              </MainNavUl>
-              <SocialMedia>
-                <SocialFollow icons={socialIcons} />
-              </SocialMedia>
+              <div className="inner-wrapper">
+                <MainNavUl>
+                  {menuItems.map((item, index) => {
+                    return (
+                      <MainNavItem key={index} {...item} location={location} />
+                    )
+                  })}
+                </MainNavUl>
+                <SocialMedia>
+                  <SocialFollow icons={socialIcons} />
+                </SocialMedia>
+              </div>
             </MenuWrapper>
           </MainNavStyled>
         )

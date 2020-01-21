@@ -3,9 +3,9 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/allSite/seo/seo"
 
-import HeroImage from "../components/HeroImage"
+import TopQuote from "../components/TopQuote"
 import IntroCrop from "../components/IntroCrop"
-import HeroQuote from "../components/HeroQuote"
+import HeroDivider from "../components/HeroDivider"
 import ContentCircleImg from "../components/ContentCircleImg"
 import ServicesList from "../components/ServicesList"
 import ImageGallery from "../components/ImageGallery"
@@ -13,9 +13,9 @@ import Testimonials from "../components/Testimonials"
 
 const IndexPage = props => {
   const {
-    heroImage,
+    topQuote,
     introCrop,
-    heroQuote,
+    heroDivider,
     contentCircleImg,
     servicesList,
     testimonials,
@@ -24,9 +24,9 @@ const IndexPage = props => {
   return (
     <Layout location={props.location.pathname}>
       <SEO title="Home" />
-      <HeroImage data={heroImage} />
+      <TopQuote data={topQuote} />
       <IntroCrop data={introCrop} />
-      <HeroQuote data={heroQuote} />
+      <HeroDivider data={heroDivider} />
       <ContentCircleImg data={contentCircleImg} />
       <ServicesList data={servicesList} />
       <ImageGallery data={imageGallery} />
@@ -37,20 +37,10 @@ const IndexPage = props => {
 
 export const homeQuery = graphql`
   {
-    heroImage: wordpressPage(slug: { eq: "home" }) {
-      title
+    topQuote: wordpressPage(slug: { eq: "home" }) {
       acf {
-        _adw_hit_hero_image {
-          alt_text
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 2000) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-        _adw_hit_hero_title
+        _adw_toq_quote
+        _adw_toq_author
       }
     }
 
@@ -72,15 +62,13 @@ export const homeQuery = graphql`
       }
     }
 
-    heroQuote: wordpressPage(slug: { eq: "home" }) {
+    heroDivider: wordpressPage(slug: { eq: "home" }) {
       acf {
-        _adw_hq_quote_body
-        _adw_hq_quote_author
         _adw_hq_image {
           alt_text
           localFile {
             childImageSharp {
-              fluid(maxWidth: 800) {
+              fluid(maxWidth: 1600) {
                 ...GatsbyImageSharpFluid
               }
             }

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef, useEffect } from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
 import {
@@ -10,6 +10,9 @@ import {
 } from "../Utilities"
 
 const IntroCropStyled = styled.section`
+  padding-top: 12.5rem;
+  padding-bottom: 10rem;
+
   .wrapper {
     ${standardWrapper};
   }
@@ -18,7 +21,7 @@ const IntroCropStyled = styled.section`
     position: relative;
 
     @media (min-width: 768px) {
-      width: calc(65% - 2rem);
+      width: calc(70% - 2rem);
       margin-right: 2rem;
     }
   }
@@ -27,7 +30,7 @@ const IntroCropStyled = styled.section`
     width: 100%;
 
     @media (min-width: 768px) {
-      max-width: 50rem;
+      max-width: 100%;
     }
 
     h2 {
@@ -36,15 +39,21 @@ const IntroCropStyled = styled.section`
     }
   }
 
+  .para-wrapper {
+    position: relative;
+    padding-left: 10rem;
+  }
+
   .side-title {
     width: 100%;
 
     @media (min-width: 768px) {
       position: absolute;
-      bottom: 0;
-      left: -3.5rem;
+      top: 100%;
+      left: 5rem;
       transform-origin: left center;
       transform: rotate(-90deg);
+      text-align: right;
     }
 
     p {
@@ -72,12 +81,33 @@ const IntroCropStyled = styled.section`
     padding: 2rem 22.5rem 0 2.5rem;
 
     @media (min-width: 768px) {
-      width: calc(35% - 2rem);
+      width: calc(30% - 4rem);
       margin-left: 2rem;
+      margin-right: 2rem;
       padding: 0;
     }
   }
 `
+
+const onLoadEvent = (divHeight, sideDiv) => {
+  const topHeight = divHeight.current.offsetHeight - 5
+  sideDiv.current.style.width = `${divHeight.current.offsetHeight}px`
+  sideDiv.current.style.top = `${topHeight}px`
+}
+
+const changeHeightOnWinderResize = (divHeight, sideDiv) => {
+  const topHeight = divHeight.current.offsetHeight - 5
+  sideDiv.current.style.width = `${divHeight.current.offsetHeight}px`
+  sideDiv.current.style.top = `${topHeight}px`
+}
+
+const addWindowResizeEventListener = (divHeight, sideDiv) => {
+  if (typeof window !== "undefined") {
+    window.addEventListener("resize", () => {
+      changeHeightOnWinderResize(divHeight, sideDiv)
+    })
+  }
+}
 
 const IntroCrop = ({ data }) => {
   const title = data.acf._adw_icc_main_title
@@ -86,6 +116,13 @@ const IntroCrop = ({ data }) => {
   const imgFluid = data.acf._adw_ic_crop_img.localFile.childImageSharp.fluid
   const imgAlt = data.acf._adw_ic_crop_img.alt_text
 
+  const bodyDiv = useRef(null)
+  const sideDiv = useRef(null)
+
+  addWindowResizeEventListener(bodyDiv, sideDiv)
+
+  useEffect(() => onLoadEvent(bodyDiv, sideDiv), [])
+
   return (
     <IntroCropStyled>
       <div className="wrapper">
@@ -93,13 +130,16 @@ const IntroCrop = ({ data }) => {
           <div className="main-title">
             <h2>{title}</h2>
           </div>
-          <div className="side-title">
-            <p>{sideTitle}</p>
+          <div className="para-wrapper">
+            <div
+              ref={bodyDiv}
+              className="para-content"
+              dangerouslySetInnerHTML={{ __html: content }}
+            />
+            <div ref={sideDiv} className="side-title">
+              <p>{sideTitle}</p>
+            </div>
           </div>
-          <div
-            className="para-content"
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
         </div>
         <div className="close-crop-image">
           <Img fluid={imgFluid} alt={imgAlt} />
