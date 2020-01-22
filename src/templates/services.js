@@ -6,6 +6,7 @@ import SEO from "../components/allSite/seo/seo"
 import TopQuote from "../components/TopQuote"
 import IntroSec from "../components/servicesPage/IntroSec"
 import ServicesDes from "../components/servicesPage/ServicesDes"
+import ServicesIcons from "../components/servicesPage/ServicesIcons"
 import Testimonials from "../components/Testimonials"
 
 const Services = props => {
@@ -13,6 +14,7 @@ const Services = props => {
     topQuote,
     introContent,
     servicsDescriptions,
+    servicesIcons,
     testimonials,
   } = props.data
   return (
@@ -21,6 +23,7 @@ const Services = props => {
       <TopQuote data={topQuote} />
       <IntroSec data={introContent} />
       <ServicesDes data={servicsDescriptions} />
+      <ServicesIcons data={servicesIcons} />
       <Testimonials data={testimonials} />
     </Layout>
   )
@@ -63,20 +66,23 @@ export const query = graphql`
       }
     }
 
-    heroImage: wordpressPage(wordpress_id: { eq: $id }) {
-      title
+    servicesIcons: wordpressPage(wordpress_id: { eq: $id }) {
       acf {
-        _adw_hit_hero_image {
-          alt_text
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 2000) {
-                ...GatsbyImageSharpFluid
+        _adw_ser_services_icons {
+          title
+          description
+          icon
+          image {
+            alt_text
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1000) {
+                  ...GatsbyImageSharpFluid
+                }
               }
             }
           }
         }
-        _adw_hit_hero_title
       }
     }
 
