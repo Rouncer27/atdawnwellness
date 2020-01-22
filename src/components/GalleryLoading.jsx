@@ -15,6 +15,10 @@ const GalleryLoadingSection = styled.section`
       color: #437a7e;
     }
   }
+
+  .gallery-image {
+    padding: 0.5rem;
+  }
 `
 
 const GalleryLoading = ({ data }) => {
@@ -33,7 +37,9 @@ const GalleryLoading = ({ data }) => {
         >
           {data.acf._adw_lig_gallery.map((img, index) => {
             return (
-              <Img key={index} fluid={img.localFile.childImageSharp.fluid} />
+              <div className="gallery-image">
+                <Img key={index} fluid={img.localFile.childImageSharp.fluid} />
+              </div>
             )
           })}
         </ImageMasonry>
