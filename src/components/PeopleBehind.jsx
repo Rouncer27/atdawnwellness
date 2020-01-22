@@ -5,7 +5,12 @@ import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
-import { medWrapper, headlineThreeSmall } from "../Utilities"
+import {
+  medWrapper,
+  headlineThreeSmall,
+  bodyCopy,
+  headlineOne,
+} from "../Utilities"
 
 const settings = {
   slidesToShow: 1,
@@ -19,12 +24,19 @@ const settings = {
   centerMode: true,
   centerPadding: "0px",
   arrows: false,
-  dots: true,
+  dots: false,
 }
 
 const PeopleBehindSection = styled.section`
   .wrapper {
     ${medWrapper};
+  }
+
+  .main-title {
+    h2 {
+      ${headlineOne};
+      color: #437a7e;
+    }
   }
 
   .bioSlider {
@@ -63,6 +75,20 @@ const PersonBio = styled.div`
   h3 {
     ${headlineThreeSmall};
     color: #b7aa9b;
+  }
+
+  .bio-body {
+    p {
+      ${bodyCopy};
+      color: #505b61;
+    }
+  }
+
+  .sub-title-cred {
+    ${bodyCopy};
+    margin-bottom: 1rem;
+    color: #81a5a3;
+    font-weight: bold;
   }
 `
 
@@ -114,7 +140,7 @@ const PeopleBehind = ({ data }) => {
   return (
     <PeopleBehindSection>
       <div className="wrapper">
-        <div>
+        <div className="main-title">
           <h2>{title}</h2>
         </div>
         <div>
@@ -147,8 +173,14 @@ const PeopleBehind = ({ data }) => {
                 <PersonBio className="single-bio" key={index}>
                   <div>
                     <h3>{person.name}</h3>
+                    {person.sub_title && (
+                      <p className="sub-title-cred">{person.sub_title}</p>
+                    )}
                   </div>
-                  <div dangerouslySetInnerHTML={{ __html: person.bio }} />
+                  <div
+                    className="bio-body"
+                    dangerouslySetInnerHTML={{ __html: person.bio }}
+                  />
                 </PersonBio>
               )
             })}

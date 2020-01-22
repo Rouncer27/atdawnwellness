@@ -7,6 +7,7 @@ import TopQuote from "../components/TopQuote"
 import AboutIntro from "../components/AboutIntro"
 import DividerImages from "../components/aboutPage/DividerImg"
 import PeopleBehind from "../components/PeopleBehind"
+import WhereFind from "../components/aboutPage/WhereFind"
 import CircleImgQuote from "../components/CircleImgQuote"
 import GalleryLoading from "../components/GalleryLoading"
 
@@ -15,6 +16,7 @@ const About = props => {
   const { aboutIntro } = props.data
   const { dividerImg } = props.data
   const { peopleBehind } = props.data
+  const { whereToFind } = props.data
   const { circleImgQuote } = props.data
   const { loadGallery } = props.data
   return (
@@ -24,6 +26,7 @@ const About = props => {
       <AboutIntro data={aboutIntro} />
       <DividerImages data={dividerImg} />
       <PeopleBehind data={peopleBehind} />
+      <WhereFind data={whereToFind} />
       <CircleImgQuote data={circleImgQuote} />
       <GalleryLoading data={loadGallery} />
     </Layout>
@@ -94,6 +97,7 @@ export const query = graphql`
         _adw_pbi_main_title
         _adw_pbi_team {
           name
+          sub_title
           image {
             alt_text
             localFile {
@@ -106,6 +110,24 @@ export const query = graphql`
           }
           bio
         }
+      }
+    }
+
+    whereToFind: wordpressPage(wordpress_id: { eq: $id }) {
+      acf {
+        _adw_htfu_image {
+          alt_text
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 500) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+        _adw_htfu_title
+        _adw_htfu_sub_title
+        _adw_htfu_content
       }
     }
 

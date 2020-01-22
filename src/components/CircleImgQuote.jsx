@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
 import {
@@ -9,6 +9,12 @@ import {
 } from "../Utilities"
 
 const CircleImgQuoteSection = styled.div`
+  padding: 5rem 0;
+
+  @media (min-width: 1025px) {
+    padding: 10rem 0;
+  }
+
   .wrapper {
     ${medWrapper};
   }
@@ -42,7 +48,7 @@ const CircleImgQuoteSection = styled.div`
       p {
         ${headlineThreeSmall};
         margin-bottom: 2.5rem;
-        color: #2c2c2c;
+        color: #b7aa9b;
       }
     }
 
@@ -60,11 +66,31 @@ const CircleImgQuoteSection = styled.div`
   }
 `
 
+const preventTheWidows = quoteSec => {
+  const quote = [...quoteSec.current.querySelectorAll("p")]
+
+  quote.forEach(para => {
+    const wordArray = para.innerText.split(" ")
+
+    if (wordArray.length > 1) {
+      wordArray[wordArray.length - 2] +=
+        "&nbsp;" + wordArray[wordArray.length - 1]
+      wordArray.pop()
+    }
+
+    const newQuote = wordArray.join(" ")
+    para.innerHTML = newQuote
+  })
+}
+
 const CircleImgQuote = ({ data }) => {
   const imgFluid = data.acf._adw_ciq_image.localFile.childImageSharp.fluid
   const imgAlt = data.acf._adw_ciq_image.alt_text
   const quote = data.acf._adw_ciq_quote
   const name = data.acf._adw_ciq_name
+  const quoteSec = useRef(null)
+  useEffect(() => preventTheWidows(quoteSec), [])
+
   return (
     <CircleImgQuoteSection>
       <div className="wrapper">
@@ -75,6 +101,7 @@ const CircleImgQuote = ({ data }) => {
         </div>
         <div className="quote-content">
           <div
+            ref={quoteSec}
             className="quote-content__body"
             dangerouslySetInnerHTML={{ __html: quote }}
           />
