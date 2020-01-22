@@ -3,11 +3,6 @@ import ImageMasonry from "react-image-masonry"
 import Img from "gatsby-image"
 
 const GalleryLoading = ({ data }) => {
-  console.log(data)
-
-  const sourceUrls = data.acf._adw_lig_gallery.map(img => img.source_url)
-  console.log(sourceUrls)
-
   return (
     <div>
       <ImageMasonry

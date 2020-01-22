@@ -4,13 +4,17 @@ import styled from "styled-components"
 import {
   standardWrapper,
   headlineOne,
+  headlineThree,
   headlineThreeSmall,
   colors,
   bodyCopy,
 } from "../Utilities"
 
 const AboutIntroStyled = styled.section`
+  overflow: hidden;
+
   .wrapper {
+    position: relative;
     ${standardWrapper};
   }
 
@@ -18,8 +22,9 @@ const AboutIntroStyled = styled.section`
     position: relative;
 
     @media (min-width: 768px) {
-      width: calc(65% - 2rem);
-      margin-right: 2rem;
+      width: calc(65%);
+      margin-right: 30%;
+      margin-left: 5%;
     }
   }
 
@@ -41,10 +46,11 @@ const AboutIntroStyled = styled.section`
 
     @media (min-width: 768px) {
       position: absolute;
-      bottom: 0;
+      bottom: -5rem;
       left: -3.5rem;
       transform-origin: left center;
       transform: rotate(-90deg);
+      text-align: right;
     }
 
     p {
@@ -66,6 +72,42 @@ const AboutIntroStyled = styled.section`
       }
     }
   }
+
+  .mind-body-soul {
+    position: absolute;
+    width: 100%;
+    top: 90%;
+    right: -90%;
+    transform-origin: left center;
+    transform: rotate(-90deg);
+    text-align: left;
+
+    @media (min-width: 768px) {
+      position: relative;
+      top: auto;
+      right: auto;
+      width: 100%;
+      padding-top: 5rem;
+      transform: rotate(0deg);
+      text-align: center;
+    }
+
+    @media (min-width: 1025px) {
+      position: absolute;
+      top: 50%;
+      right: -100%;
+      width: 100%;
+      padding-top: 0;
+      transform: rotate(-90deg);
+      text-align: left;
+    }
+
+    p {
+      ${headlineThree};
+      margin: 0;
+      color: #c3e6d7;
+    }
+  }
 `
 
 const AboutIntro = ({ data }) => {
@@ -85,6 +127,9 @@ const AboutIntro = ({ data }) => {
               __html: data.acf._adw_about_intro_main_content,
             }}
           />
+        </div>
+        <div className="mind-body-soul">
+          <p>mind. body. soul.</p>
         </div>
       </div>
     </AboutIntroStyled>
