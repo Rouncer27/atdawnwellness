@@ -4,8 +4,12 @@ import styled from "styled-components"
 import { medWrapper } from "../Utilities"
 
 const ImageGalleryStyled = styled.div`
-  padding: 10rem 0;
-  padding-bottom: 20rem;
+  padding: 2rem 0 10rem;
+
+  @media (min-width: 1025px) {
+    padding: 10rem 0;
+    padding-bottom: 20rem;
+  }
 
   .wrapper {
     ${medWrapper};
@@ -14,15 +18,16 @@ const ImageGalleryStyled = styled.div`
 `
 
 const ImageOne = styled.div`
-  width: 100%;
+  width: calc(50% - 2rem);
+  margin: 2rem 1rem;
 
   @media (min-width: 768px) {
-    width: 50%;
   }
 
   @media (min-width: 1025px) {
     width: calc(50%);
     margin-top: auto;
+    margin-right: 0;
     margin-left: 0;
     margin-bottom: -45rem;
     padding: 2rem;
@@ -30,31 +35,33 @@ const ImageOne = styled.div`
 `
 
 const ImageTwo = styled.div`
-  width: 100%;
+  width: calc(50% - 2rem);
+  margin: 2rem 1rem;
 
   @media (min-width: 768px) {
-    width: 50%;
   }
 
   @media (min-width: 1025px) {
     width: calc(50% - 20rem);
     margin-top: auto;
     margin-right: 20rem;
+    margin-left: 0;
     margin-bottom: 0;
     padding: 2rem;
   }
 `
 
 const ImageThree = styled.div`
-  width: 100%;
+  width: calc(50% - 2rem);
+  margin: 2rem 1rem;
 
   @media (min-width: 768px) {
-    width: 50%;
   }
 
   @media (min-width: 1025px) {
     width: calc(50% - 20rem);
     margin-top: auto;
+    margin-right: 0;
     margin-left: 20rem;
     margin-bottom: -15rem;
     padding: 2rem;
@@ -62,14 +69,15 @@ const ImageThree = styled.div`
 `
 
 const ImageFour = styled.div`
-  width: 100%;
+  width: calc(50% - 2rem);
+  margin: 2rem 1rem;
 
   @media (min-width: 768px) {
-    width: 50%;
   }
 
   @media (min-width: 1025px) {
     padding: 2rem;
+    margin: 0;
   }
 `
 

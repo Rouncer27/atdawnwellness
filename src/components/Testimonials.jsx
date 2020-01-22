@@ -63,13 +63,25 @@ const TestimonialsSection = styled.section`
       ${fontSizer(10, 18, 76.8, 160, 8)}
       display: block;
       position: absolute;
-      top: -8rem;
+      top: -2rem;
       right: 0;
       left: 0;
       color: #d8e3e9;
       font-family: ${fonts.fontSecondary};
       text-align: center;
       content: "“";
+    }
+
+    @media (min-width: 768px) {
+      &::before {
+        top: -4rem;
+      }
+    }
+
+    @media (min-width: 1025px) {
+      &::before {
+        top: -8rem;
+      }
     }
   }
 

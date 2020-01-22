@@ -21,17 +21,28 @@ const ContentCircleImgContent = styled.section`
     width: 100%;
 
     @media (min-width: 768px) {
-      width: 50%;
-      margin-right: 10%;
+      width: 60%;
+      margin-right: 5%;
+      margin-left: 35%;
     }
 
     @media (min-width: 1025px) {
+      width: 60%;
+      margin-right: 10%;
+      margin-left: 30%;
+    }
+
+    @media (min-width: 1150px) {
       width: 50%;
       margin-right: 20%;
       margin-left: 30%;
     }
 
     &__title {
+      @media (min-width: 1025px) {
+        padding-bottom: 5rem;
+      }
+
       h2 {
         ${headlineOne};
         margin-bottom: 1rem;
@@ -71,23 +82,31 @@ const ContentCircleImgContent = styled.section`
   .circleImage {
     width: 20rem;
     height: 20rem;
-    margin: 0;
+    margin-right: auto;
+    margin-left: 0;
     border-radius: 50%;
     border: solid 1.25rem #e8ecf5;
     overflow: hidden;
 
     @media (min-width: 768px) {
-      width: 40%;
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      width: 20vw;
+      max-width: 21rem;
+      height: 20vw;
+      max-height: 21rem;
+      transform: translateY(-50%);
     }
 
     @media (min-width: 1025px) {
       position: absolute;
-      top: 50%;
-      left: 10%;
-      width: 14vw;
-      max-width: 17rem;
-      height: 14vw;
-      max-height: 17rem;
+      top: 65%;
+      left: 5%;
+      width: 17vw;
+      max-width: 21rem;
+      height: 17vw;
+      max-height: 21rem;
       transform: translateY(-50%);
       border: solid 1.25rem #e8ecf5;
     }

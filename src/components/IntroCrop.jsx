@@ -4,16 +4,25 @@ import styled from "styled-components"
 import {
   standardWrapper,
   headlineOne,
+  headlineThree,
   headlineThreeSmall,
   colors,
   bodyCopy,
 } from "../Utilities"
 
 const IntroCropStyled = styled.section`
-  padding-top: 12.5rem;
-  padding-bottom: 10rem;
+  @media (min-width: 768px) {
+    padding-top: 0;
+    padding-bottom: 2.5rem;
+  }
+
+  @media (min-width: 1025px) {
+    padding-top: 12.5rem;
+    padding-bottom: 10rem;
+  }
 
   .wrapper {
+    position: relative;
     ${standardWrapper};
   }
 
@@ -41,7 +50,10 @@ const IntroCropStyled = styled.section`
 
   .para-wrapper {
     position: relative;
-    padding-left: 10rem;
+    padding-left: 0;
+    @media (min-width: 768px) {
+      padding-left: 10rem;
+    }
   }
 
   .side-title {
@@ -78,13 +90,51 @@ const IntroCropStyled = styled.section`
 
   .close-crop-image {
     width: 100%;
-    padding: 2rem 22.5rem 0 2.5rem;
+    max-width: 25rem;
+    padding: 2rem;
 
     @media (min-width: 768px) {
       width: calc(30% - 4rem);
+      max-width: 100%;
       margin-left: 2rem;
       margin-right: 2rem;
       padding: 0;
+    }
+  }
+
+  .mind-body-soul {
+    position: absolute;
+    width: 100%;
+    top: 90%;
+    right: -90%;
+    transform-origin: left center;
+    transform: rotate(-90deg);
+    text-align: left;
+
+    @media (min-width: 768px) {
+      position: relative;
+      top: auto;
+      right: auto;
+      width: 100%;
+      padding-top: 5rem;
+      transform: rotate(0deg);
+      text-align: center;
+    }
+
+    @media (min-width: 1025px) {
+      position: absolute;
+      top: 90%;
+      right: -100%;
+      width: 100%;
+      padding-top: 0;
+      transform: rotate(-90deg);
+      text-align: left;
+    }
+
+    p {
+      ${headlineThree};
+      margin: 0;
+      color: #c3e6d7;
     }
   }
 `
@@ -143,6 +193,9 @@ const IntroCrop = ({ data }) => {
         </div>
         <div className="close-crop-image">
           <Img fluid={imgFluid} alt={imgAlt} />
+        </div>
+        <div className="mind-body-soul">
+          <p>mind. body. soul.</p>
         </div>
       </div>
     </IntroCropStyled>

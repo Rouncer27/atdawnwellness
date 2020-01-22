@@ -49,10 +49,21 @@ const StyledFooter = styled.footer`
   }
 
   .single-image {
-    width: 100%;
+    width: calc(33.33% - 1rem);
+    margin: 0.5rem;
 
-    @media (min-width: 1025px) {
+    @media (min-width: 768px) {
       width: 20%;
+      margin: 0;
+    }
+
+    &:nth-of-type(5),
+    &:nth-of-type(4) {
+      width: calc(50% - 1rem);
+
+      @media (min-width: 768px) {
+        width: 20%;
+      }
     }
   }
 
@@ -68,11 +79,22 @@ const StyledFooter = styled.footer`
   }
 
   .footerClosedCrop {
-    position: absolute;
-    right: 5rem;
-    bottom: 0;
-    width: 30rem;
-    height: 26rem;
+    display: none;
+
+    @media (min-width: 768px) {
+      display: block;
+      position: absolute;
+      right: 2rem;
+      bottom: 0;
+      width: calc(30rem / 1.4);
+      height: calc(26rem / 1.4);
+    }
+
+    @media (min-width: 1025px) {
+      right: 5rem;
+      width: 30rem;
+      height: 26rem;
+    }
   }
 
   .footerAddress {
@@ -92,31 +114,44 @@ const StyledFooter = styled.footer`
 
     &__hours {
       @media (min-width: 1025px) {
-        max-width: 40rem;
+        max-width: 65rem;
       }
     }
 
     &__address {
       @media (min-width: 1025px) {
-        max-width: 40rem;
+        max-width: 65rem;
       }
     }
   }
 
   .footerCopy {
     width: 100%;
-    text-align: center;
+    text-align: left;
+
+    @media (min-width: 768px) {
+      max-width: 55rem;
+      margin-right: auto;
+      margin-left: 0;
+    }
+
+    @media (min-width: 1025px) {
+      max-width: 65rem;
+      margin-right: auto;
+      margin-left: 0;
+      text-align: left;
+    }
 
     p {
       ${bodyCopy};
       margin: 0;
-      color: ${colors.white};
+      color: #bcd5c2;
     }
 
     a {
       ${bodyCopy};
       margin: 0;
-      color: ${colors.white};
+      color: #bcd5c2;
     }
   }
 `
@@ -158,9 +193,6 @@ const Footer = () => {
               <h3>Address</h3>
               <div dangerouslySetInnerHTML={{ __html: address }} />
             </div>
-            <div className="footerClosedCrop">
-              <Img fluid={closeCrop} alt={closeAlt} />
-            </div>
           </div>
           <div className="footerCopy">
             <p>
@@ -169,13 +201,16 @@ const Footer = () => {
                 <span>
                   Made in Airdrie. Designed and developed by{" "}
                   <a href="https://switchbackcreative.ca">
-                    Switchback Creative Inc.
+                    Switchback Creative Inc
                   </a>
                   . Built with ♡ and{" "}
                   <a href="https://www.gatsbyjs.org">Gatsby</a>.
                 </span>
               )}{" "}
             </p>
+            <div className="footerClosedCrop">
+              <Img fluid={closeCrop} alt={closeAlt} />
+            </div>
           </div>
         </div>
       </div>
