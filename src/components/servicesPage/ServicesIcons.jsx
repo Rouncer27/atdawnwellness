@@ -49,6 +49,7 @@ const ServicesIconsSection = styled.section`
 `
 
 const ServiceIcon = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,11 +72,33 @@ const ServiceIcon = styled.div`
   h2 {
     ${fontSizer(1.6, 1.8, 76.8, 150, 1.6)};
     margin: 0;
+    margin-top: 2.5rem;
     width: 100%;
     color: #505b61;
     font-family: ${fonts.fontPrimary};
     font-weight: bold;
     text-transform: uppercase;
+  }
+
+  .service-icon {
+    position: absolute;
+    top: -6rem;
+    right: 0;
+    left: 0;
+    width: 10rem;
+    height: 10rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+    border-radius: 50%;
+    background: #fff;
+    overflow: hidden;
+
+    svg {
+      display: block;
+      width: 7rem;
+      height: 7rem;
+      margin: auto;
+    }
   }
 `
 
@@ -88,10 +111,11 @@ const ServicesDescriptions = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  display: ${props => (props.isModleActive ? "flex" : "none")};
+  transition: all 0.4s ease-in;
+  display: ${props => (props.isModleActive ? "flex" : "flex")};
   visibility: ${props => (props.isModleActive ? "visible" : "hidden")};
   opacity: ${props => (props.isModleActive ? 1 : 0)};
-  z-index: 9999999;
+  z-index: ${props => (props.isModleActive ? 99999999 : -1)};
 
   .model-background {
     position: absolute;
@@ -105,12 +129,16 @@ const ServicesDescriptions = styled.div`
 `
 
 const SingleDescription = styled.div`
-  display: none;
-  position: relative;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   align-self: center;
   width: 100%;
   max-width: 100rem;
-  min-height: 50rem;
+  min-height: 57.5rem;
+  transition: all 0.4s ease-in;
+  transform: translate(-50%, -50%);
   background: #c3e6d7;
   visibility: hidden;
   opacity: 0;
@@ -125,8 +153,6 @@ const SingleDescription = styled.div`
   }
 
   &.activeOpen {
-    display: flex;
-
     visibility: visible;
     opacity: 1;
   }
@@ -136,6 +162,8 @@ const SingleDescription = styled.div`
     max-width: 30rem;
 
     .image-container {
+      height: 30rem;
+      overflow: hidden;
       img {
         max-width: 100%;
         max-height: 100%;
@@ -145,6 +173,7 @@ const SingleDescription = styled.div`
     .icon-container {
       max-width: 100%;
       max-height: 100%;
+      min-height: 27.5rem;
       padding: 6rem;
       background: #fff;
 
@@ -175,6 +204,35 @@ const SingleDescription = styled.div`
     max-width: 70rem;
     padding: 5rem 7.5rem;
     background: #c3e6d7;
+  }
+
+  .button-close {
+    position: absolute;
+    top: 1rem;
+    right: 5rem;
+
+    button {
+      position: relative;
+      background: transparent;
+      border: none;
+
+      &:after {
+        position: absolute;
+        top: 50%;
+        color: #fff;
+        font-family: ${fonts.fontAwesome};
+        font-size: 3rem;
+        content: "\f00d";
+      }
+
+      &:hover {
+        cursor: pointer;
+        &:after {
+          cursor: pointer;
+          color: #6aacac;
+        }
+      }
+    }
   }
 
   .navigation {
@@ -244,6 +302,34 @@ const ServicesIcons = ({ data }) => {
           </h3>
         </div>
         {services.map((service, index) => {
+          let icon =
+            service.icon === "stones" ? (
+              <StonesSvg />
+            ) : service.icon === "bamboo" ? (
+              <BambooSvg />
+            ) : service.icon === "raindrop" ? (
+              <RaindropSvg />
+            ) : service.icon === "relaxation" ? (
+              <RelaxSvg />
+            ) : service.icon === "massage" ? (
+              <PelvicSvg />
+            ) : service.icon === "prenatal" ? (
+              <PrenatalSvg />
+            ) : service.icon === "postnatal" ? (
+              <PostnatalSvg />
+            ) : service.icon === "cupping" ? (
+              <CuppingSvg />
+            ) : service.icon === "muds" ? (
+              <NaturopathSvg />
+            ) : service.icon === "scrubs" ? (
+              <ScrubsSvg />
+            ) : service.icon === "pdtr" ? (
+              <PdtrSvg />
+            ) : service.icon === "fascial" ? (
+              <FascialSvg />
+            ) : (
+              <StonesSvg />
+            )
           return (
             <ServiceIcon
               onClick={() => {
@@ -255,6 +341,7 @@ const ServicesIcons = ({ data }) => {
             >
               <div>
                 <h2>{service.title}</h2>
+                <div className="service-icon">{icon}</div>
               </div>
             </ServiceIcon>
           )
@@ -284,7 +371,7 @@ const ServicesIcons = ({ data }) => {
               <NaturopathSvg />
             ) : service.icon === "scrubs" ? (
               <ScrubsSvg />
-            ) : service.icon === "pdt" ? (
+            ) : service.icon === "pdtr" ? (
               <PdtrSvg />
             ) : service.icon === "fascial" ? (
               <FascialSvg />
@@ -328,6 +415,13 @@ const ServicesIcons = ({ data }) => {
                     }}
                   />
                 </div>
+              </div>
+              <div className="button-close">
+                <button
+                  onClick={() => {
+                    updateModleActive(false)
+                  }}
+                />
               </div>
             </SingleDescription>
           )
