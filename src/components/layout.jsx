@@ -11,6 +11,18 @@ import Footer from "./allSite/Footer"
 import BookNow from "./shared/BookNow"
 
 const Layout = ({ children, location }) => {
+  const slug = location.split("/").join("")
+  let displayBookBtn = false
+  if (
+    slug === "" ||
+    slug === "home" ||
+    slug === "contact" ||
+    slug === "services" ||
+    slug === "about-us"
+  ) {
+    displayBookBtn = true
+  }
+
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -30,7 +42,7 @@ const Layout = ({ children, location }) => {
             siteTitle={data.site.siteMetadata.title}
             location={location}
           />
-          <BookNow />
+          {displayBookBtn && <BookNow />}
           <main>{children}</main>
           <Footer />
         </React.Fragment>
