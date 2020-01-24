@@ -58,11 +58,14 @@ const LetChat = ({ data }) => {
   const fluid =
     data.acf._adw_contact_chat_google_image.localFile.childImageSharp.fluid
   const imgAlt = data.acf._adw_contact_chat_google_image.alt_text
+  const googleMapUrl = data.acf._adw_contact_chat_google_url
   return (
     <LetChatSection>
       <div className="wrapper">
         <div className="google-map">
-          <Img fluid={fluid} alt={imgAlt} />
+          <a target="_blank" rel="noopener noreferrer" href={googleMapUrl}>
+            <Img fluid={fluid} alt={imgAlt} />
+          </a>
         </div>
         <div className="form-container">
           <div className="main-title">

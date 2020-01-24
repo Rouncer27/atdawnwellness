@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/allSite/seo/seo"
 
 import TopQuote from "../components/TopQuote"
-import AboutIntro from "../components/AboutIntro"
+import AboutIntro from "../components/aboutPage/AboutIntro"
 import DividerImages from "../components/aboutPage/DividerImg"
 import PeopleBehind from "../components/PeopleBehind"
 import WhereFind from "../components/aboutPage/WhereFind"

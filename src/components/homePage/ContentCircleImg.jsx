@@ -7,9 +7,12 @@ import {
   headlineThreeSmall,
   colors,
   headlineOne,
-} from "../Utilities"
+} from "../../Utilities"
+
+import PlantTwo from "../../elelments/PlantTwo"
 
 const ContentCircleImgContent = styled.section`
+  position: relative;
   .wrapper {
     ${medWrapper};
     position: relative;
@@ -111,6 +114,17 @@ const ContentCircleImgContent = styled.section`
       border: solid 1.25rem #e8ecf5;
     }
   }
+
+  .plant {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 5vw;
+    width: calc(28.8rem / 1.75);
+    height: calc(110rem / 1.75);
+    transform-origin: center center;
+    transform: rotate(0deg);
+    z-index: -1;
+  }
 `
 
 const ContentCircleImg = ({ data }) => {
@@ -138,6 +152,9 @@ const ContentCircleImg = ({ data }) => {
         <div className="circleImage">
           <Img fluid={imgFluid} alt={imgAlt} />
         </div>
+      </div>
+      <div className="plant">
+        <PlantTwo />
       </div>
     </ContentCircleImgContent>
   )

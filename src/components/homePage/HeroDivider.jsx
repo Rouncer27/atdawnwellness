@@ -1,7 +1,8 @@
 import React from "react"
 import BgImg from "gatsby-background-image"
 import styled from "styled-components"
-import { colors, fonts, headlineThreeSmall, bodyCopy } from "../Utilities"
+
+import PlantFour from "../../elelments/PlantFour"
 
 const HeroDividerSection = styled.section`
   position: relative;
@@ -36,6 +37,17 @@ const HeroDividerSection = styled.section`
       height: 100%;
     }
   }
+
+  .plant {
+    position: absolute;
+    top: 0;
+    left: 5vw;
+    width: calc(38.2rem / 1.4);
+    height: calc(110rem / 1.4);
+    transform-origin: center center;
+    transform: rotate(0deg);
+    z-index: -1;
+  }
 `
 
 const HeroDivider = ({ data }) => {
@@ -46,6 +58,9 @@ const HeroDivider = ({ data }) => {
         <div className="background-image">
           <BgImg tag="div" fluid={heroFluid} />
         </div>
+      </div>
+      <div className="plant">
+        <PlantFour />
       </div>
     </HeroDividerSection>
   )

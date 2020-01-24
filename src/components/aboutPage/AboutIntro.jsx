@@ -8,9 +8,12 @@ import {
   headlineThreeSmall,
   colors,
   bodyCopy,
-} from "../Utilities"
+} from "../../Utilities"
+
+import PlantFive from "../../elelments/PlantFive"
 
 const AboutIntroStyled = styled.section`
+  position: relative;
   overflow: hidden;
 
   .wrapper {
@@ -108,6 +111,17 @@ const AboutIntroStyled = styled.section`
       color: #c3e6d7;
     }
   }
+
+  .plant {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 5vw;
+    width: calc(74.8rem / 2.2);
+    height: calc(100rem / 2.2);
+    transform-origin: center center;
+    transform: rotate(15deg);
+    z-index: -1;
+  }
 `
 
 const AboutIntro = ({ data }) => {
@@ -131,6 +145,9 @@ const AboutIntro = ({ data }) => {
         <div className="mind-body-soul">
           <p>mind. body. soul.</p>
         </div>
+      </div>
+      <div className="plant">
+        <PlantFive />
       </div>
     </AboutIntroStyled>
   )
