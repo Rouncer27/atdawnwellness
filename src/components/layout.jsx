@@ -8,6 +8,8 @@ import GlobalStyle from "./allSite/styles/Golbal"
 import Header from "./allSite/header"
 import Footer from "./allSite/Footer"
 
+import BookNow from "./shared/BookNow"
+
 const Layout = ({ children, location }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -28,6 +30,7 @@ const Layout = ({ children, location }) => {
             siteTitle={data.site.siteMetadata.title}
             location={location}
           />
+          <BookNow />
           <main>{children}</main>
           <Footer />
         </React.Fragment>
