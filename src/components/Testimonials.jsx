@@ -92,6 +92,41 @@ const TestimonialsSection = styled.section`
     @media (min-width: 1025px) {
       max-width: 70rem;
     }
+
+    ul.slick-dots {
+      position: absolute;
+      right: 0;
+      bottom: -1.5rem;
+      left: 0;
+      width: 100%;
+
+      li {
+        width: 3rem;
+        height: 3rem;
+        button {
+          width: 3rem;
+          height: 3rem;
+
+          &::before {
+            display: block;
+            width: 3rem;
+            height: 3rem;
+            font-size: 1.4rem;
+            line-height: 2.25;
+            color: ${colors.colorSecondary};
+            opacity: 0.9;
+          }
+        }
+      }
+
+      li.slick-active {
+        button {
+          &::before {
+            color: ${colors.colorTertiary};
+          }
+        }
+      }
+    }
   }
 `
 

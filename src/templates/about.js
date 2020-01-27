@@ -42,23 +42,6 @@ export const query = graphql`
       }
     }
 
-    heroImage: wordpressPage(wordpress_id: { eq: $id }) {
-      title
-      acf {
-        _adw_hit_hero_image {
-          alt_text
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 2000) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-        _adw_hit_hero_title
-      }
-    }
-
     aboutIntro: wordpressPage(wordpress_id: { eq: $id }) {
       acf {
         _adw_about_intro_main_title
