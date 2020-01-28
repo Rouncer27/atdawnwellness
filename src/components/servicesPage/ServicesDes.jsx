@@ -1,12 +1,11 @@
 import React from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
-import {
-  medWrapper,
-  headlineThreeSmall,
-  headlineTwo,
-  bodyCopy,
-} from "../../Utilities"
+import { medWrapper, headlineTwo, bodyCopy } from "../../Utilities"
+
+import StonesSvg from "../../elelments/svgs/StonesSvg"
+import PelvicSvg from "../../elelments/svgs/PelvicSvg"
+import NaturopathSvg from "../../elelments/svgs/NaturopathSvg"
 
 const ServicesDesSection = styled.section`
   .wrapper {
@@ -26,6 +25,7 @@ const SingleService = styled.div`
   }
 
   .content {
+    position: relative;
     width: calc(100%);
 
     @media (min-width: 768px) {
@@ -42,6 +42,22 @@ const SingleService = styled.div`
     p {
       ${bodyCopy};
       color: #505b61;
+    }
+
+    .icon-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.25;
+      z-index: -1;
+
+      svg {
+        display: block;
+        max-width: 40rem;
+        margin: auto;
+      }
     }
   }
 
@@ -61,7 +77,16 @@ const ServicesDes = ({ data }) => {
       <div className="wrapper">
         <div>
           {allServices.map((service, index) => {
-            const icon = service.ico
+            let icon = false
+
+            if (service.icon === "stones") {
+              icon = <StonesSvg />
+            } else if (service.icon === "pelvic") {
+              icon = <PelvicSvg />
+            } else if (service.icon === "herb") {
+              icon = <NaturopathSvg />
+            }
+
             return (
               <SingleService key={index}>
                 <div className="content">
@@ -72,6 +97,7 @@ const ServicesDes = ({ data }) => {
                   <div
                     dangerouslySetInnerHTML={{ __html: service.description }}
                   />
+                  {icon && <div className="icon-background">{icon}</div>}
                 </div>
                 <div className="image">
                   <Img
