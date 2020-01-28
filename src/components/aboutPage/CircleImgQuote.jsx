@@ -1,12 +1,7 @@
 import React, { useEffect, useRef } from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
-import {
-  medWrapper,
-  headlineThree,
-  headlineThreeSmall,
-  bodyCopy,
-} from "../../Utilities"
+import { medWrapper, headlineThreeSmall, bodyCopy } from "../../Utilities"
 
 const CircleImgQuoteSection = styled.div`
   padding: 5rem 0;
