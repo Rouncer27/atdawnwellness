@@ -22,7 +22,7 @@ export const submitToWebServer = async (
   updateFormStatus,
   recaptchaRef
 ) => {
-  const FORM_POST_URL = `https://tarinresources.swbdatabases.ca/wp-json/contact-form-7/v1/contact-forms/${formID}/feedback`
+  const FORM_POST_URL = `https://atdawnmassage.swbdatabases.ca/wp-json/contact-form-7/v1/contact-forms/${formID}/feedback`
   const config = { headers: { "Content-Type": "multipart/form-data" } }
   const serverResponse = await axios.post(FORM_POST_URL, data, config)
 

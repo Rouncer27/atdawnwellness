@@ -1,10 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
 
 import InputText from "../allSite/formParts/InputText"
 import InputTextArea from "../allSite/formParts/InputTextArea"
 import { medWrapper, headlineOne, buttonOne } from "../../Utilities"
+import { submitTheForm } from "../allSite/formParts/FormUtilities/formFunctions"
 
 const LetChatSection = styled.section`
   .wrapper {
@@ -70,11 +71,45 @@ const LetChatSection = styled.section`
 `
 
 const LetChat = ({ data }) => {
+  const [formData, updateFormData] = useState({
+    yourName: "",
+    yourNumber: "",
+    yourEmail: "",
+    yourMessage: "",
+  })
+
+  const [formStatus, updateFormStatus] = useState({
+    submitting: false,
+    errorWarnDisplay: false,
+    success: false,
+    errors: [],
+    captachError: false,
+  })
+
+  const handleOnChange = e => {
+    updateFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const handleOnSubmit = (e, formId, formData, updateFormStatus) => {
+    e.preventDefault()
+    updateFormStatus({
+      ...formStatus,
+      submitting: true,
+      captachError: false,
+    })
+
+    submitTheForm(e, formId, formData, updateFormStatus)
+  }
+
   const title = data.acf._adw_contact_chat_title
   const fluid =
     data.acf._adw_contact_chat_google_image.localFile.childImageSharp.fluid
   const imgAlt = data.acf._adw_contact_chat_google_image.alt_text
   const googleMapUrl = data.acf._adw_contact_chat_google_url
+
+  console.log("Lets Chat:", formData)
+  console.log("Lets Chat:", formStatus)
+
   return (
     <LetChatSection>
       <div className="wrapper">
@@ -88,30 +123,35 @@ const LetChat = ({ data }) => {
             <h2>{title}</h2>
           </div>
 
-          <form className="form-main">
+          <form
+            className="form-main"
+            onSubmit={e => {
+              handleOnSubmit(e, 7, formData, updateFormStatus)
+            }}
+          >
             <div className="form-wrapper">
               <InputText
-                name="fullNameContact"
+                name="yourName"
                 type="text"
                 placeholder="Your Full Name"
                 label="Your Full Name"
-                value=""
-                onChange=""
-                errors=""
-                required={true}
+                value={formData.yourName}
+                onChange={handleOnChange}
+                errors={formStatus.errors}
+                required={false}
                 width="full"
                 formSide=""
                 textColor=""
               />
               <InputText
-                name="phoneNumber"
+                name="yourNumber"
                 type="text"
                 placeholder="Your Phone Number"
                 label="Your Phone Number"
-                value=""
-                onChange=""
-                errors=""
-                required={true}
+                value={formData.yourNumber}
+                onChange={handleOnChange}
+                errors={formStatus.errors}
+                required={false}
                 width="full"
                 formSide="full"
                 textColor=""
@@ -121,22 +161,22 @@ const LetChat = ({ data }) => {
                 type="email"
                 placeholder="Your Email"
                 label="Your Email"
-                value=""
-                onChange=""
-                errors=""
-                required={true}
+                value={formData.yourEmail}
+                onChange={handleOnChange}
+                errors={formStatus.errors}
+                required={false}
                 width="full"
                 formSide="full"
                 textColor=""
               />
               <InputTextArea
-                name="message"
+                name="yourMessage"
                 placeholder="Message"
                 label="Message"
-                value=""
-                onChange=""
-                errors={[]}
-                required={true}
+                value={formData.yourMessage}
+                onChange={handleOnChange}
+                errors={formStatus.errors}
+                required={false}
                 rows={5}
                 textColor=""
               />

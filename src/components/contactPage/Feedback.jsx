@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { medWrapper, headlineOne, bodyCopy, buttonOne } from "../../Utilities"
 
 import InputText from "../allSite/formParts/InputText"
 import InputTextArea from "../allSite/formParts/InputTextArea"
+import { submitTheForm } from "../allSite/formParts/FormUtilities/formFunctions"
 
 const FeedbackSection = styled.section`
   margin: 3rem auto;
@@ -74,6 +75,39 @@ const FeedbackSection = styled.section`
 `
 
 const Feedback = ({ data }) => {
+  const [formData, updateFormData] = useState({
+    fbName: "",
+    fbNumber: "",
+    fbEmail: "",
+    fbMessage: "",
+  })
+
+  const [formStatus, updateFormStatus] = useState({
+    submitting: false,
+    errorWarnDisplay: false,
+    success: false,
+    errors: [],
+    captachError: false,
+  })
+
+  const handleOnChange = e => {
+    updateFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const handleOnSubmit = (e, formId, formData, updateFormStatus) => {
+    e.preventDefault()
+    updateFormStatus({
+      ...formStatus,
+      submitting: true,
+      captachError: false,
+    })
+
+    submitTheForm(e, formId, formData, updateFormStatus)
+  }
+
+  console.log("feedback:", formData)
+  console.log("feedback:", formStatus)
+
   const title = data.acf._adw_contact_feed_title
   const content = data.acf._adw_contact_feed_content
   const btnText = data.acf._adw_contact_feed_btn_text
@@ -93,55 +127,59 @@ const Feedback = ({ data }) => {
           </a>
         </div>
         <div className="form">
-          <form>
+          <form
+            onSubmit={e => {
+              handleOnSubmit(e, 287, formData, updateFormStatus)
+            }}
+          >
             <div className="form-wrapper">
               <InputText
-                name="feedName"
+                name="fbName"
                 type="text"
                 placeholder="Your Full Name"
                 label="Your Full Name"
-                value=""
-                onChange=""
-                errors=""
+                value={formData.fbName}
+                onChange={handleOnChange}
+                errors={formStatus.errors}
                 required={false}
                 width="half"
                 formSide="left"
                 textColor=""
               />
               <InputText
-                name="feedNumber"
+                name="fbNumber"
                 type="text"
                 placeholder="Phone"
                 label="Phone"
-                value=""
-                onChange=""
-                errors=""
+                value={formData.fbNumber}
+                onChange={handleOnChange}
+                errors={formStatus.errors}
                 required={false}
                 width="half"
                 formSide="right"
                 textColor=""
               />
               <InputText
-                name="feedEmail"
+                name="fbEmail"
                 type="email"
                 placeholder="Email"
                 label="Email"
-                value=""
-                onChange=""
-                errors=""
-                required={true}
+                value={formData.fbEmail}
+                onChange={handleOnChange}
+                errors={formStatus.errors}
+                required={false}
                 width="full"
                 formSide="full"
                 textColor=""
               />
               <InputTextArea
-                name="feedMessage"
+                name="fbMessage"
                 placeholder="Message"
                 label="Message"
-                value=""
-                onChange=""
-                errors={[]}
-                required={true}
+                value={formData.fbMessage}
+                onChange={handleOnChange}
+                errors={formStatus.errors}
+                required={false}
                 rows={5}
                 textColor=""
               />
