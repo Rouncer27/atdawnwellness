@@ -1,7 +1,7 @@
 import React from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
-import { medWrapper } from "../Utilities"
+import { medWrapper } from "../../Utilities"
 
 const ImageGalleryStyled = styled.div`
   padding: 2rem 0 10rem;

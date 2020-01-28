@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { headlineThreeSmall, bodyCopy } from "../Utilities"
+import { headlineThreeSmall, bodyCopy } from "../../Utilities"
 
 const TopQuoteSection = styled.div`
   @media (min-width: 1025px) {

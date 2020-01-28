@@ -39,14 +39,32 @@ const HeroDividerSection = styled.section`
   }
 
   .plant {
+    display: none;
     position: absolute;
-    top: 0;
-    left: 5vw;
-    width: calc(38.2rem / 1.4);
-    height: calc(110rem / 1.4);
     transform-origin: center center;
     transform: rotate(0deg);
     z-index: -1;
+
+    @media (min-width: 768px) {
+      display: block;
+      top: 5rem;
+      left: 2.5vw;
+      width: calc(38.2rem / 1.75);
+      height: calc(110rem / 1.75);
+    }
+
+    @media (min-width: 1025px) {
+      top: 0;
+      left: 2.5vw;
+      width: calc(38.2rem / 1.5);
+      height: calc(110rem / 1.5);
+    }
+
+    @media (min-width: 1150px) {
+      left: 5vw;
+      width: calc(38.2rem / 1.4);
+      height: calc(110rem / 1.4);
+    }
   }
 `
 

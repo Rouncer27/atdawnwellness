@@ -19,10 +19,10 @@ const BookNowStyled = styled.div`
   align-self: center;
   align-items: center;
   position: fixed;
-  top: 5rem;
-  right: 5rem;
-  width: 10rem;
-  height: 10rem;
+  top: 1rem;
+  right: 1rem;
+  width: 6rem;
+  height: 6rem;
   background: rgba(195, 230, 215, 0.6);
   transition: all 0.3s ease-in-out;
   transform: translateX(200%);
@@ -31,12 +31,19 @@ const BookNowStyled = styled.div`
   overflow: hidden;
   z-index: 9999999999999;
 
+  @media (min-width: 768px) {
+    top: 5rem;
+    right: 5rem;
+    width: 10rem;
+    height: 10rem;
+  }
+
   &.active-button {
     transform: translateX(0%);
   }
 
   .inner-button {
-    ${fontSizer(1.4, 1.6, 76.8, 150, 1.8)};
+    ${fontSizer(1.4, 1.6, 76.8, 150, 1.2)};
     display: flex;
     justify-content: center;
     align-self: center;
@@ -51,6 +58,11 @@ const BookNowStyled = styled.div`
     font-stretch: normal;
     font-style: normal;
     line-height: 1.11;
+
+    @media (min-width: 768px) {
+      width: 6rem;
+      height: 6rem;
+    }
   }
 
   &:hover {

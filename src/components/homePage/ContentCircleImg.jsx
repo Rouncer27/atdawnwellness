@@ -13,6 +13,7 @@ import PlantTwo from "../../elelments/PlantTwo"
 
 const ContentCircleImgContent = styled.section`
   position: relative;
+  overflow: hidden;
   .wrapper {
     ${medWrapper};
     position: relative;
@@ -117,13 +118,34 @@ const ContentCircleImgContent = styled.section`
 
   .plant {
     position: absolute;
-    bottom: 1.5rem;
-    right: 5vw;
-    width: calc(28.8rem / 1.75);
-    height: calc(110rem / 1.75);
+    bottom: -7.5rem;
+    right: 20vw;
+    width: calc(28.8rem / 3);
+    height: calc(110rem / 3);
     transform-origin: center center;
-    transform: rotate(0deg);
+    transform: rotate(-55deg);
     z-index: -1;
+
+    @media (min-width: 768px) {
+      right: -10vw;
+      bottom: 0;
+      width: calc(28.8rem / 1.75);
+      height: calc(110rem / 1.75);
+      transform: rotate(0deg);
+    }
+
+    @media (min-width: 1025px) {
+      right: -2.5vw;
+      bottom: 0;
+      width: calc(28.8rem / 1.75);
+      height: calc(110rem / 1.75);
+    }
+
+    @media (min-width: 1150px) {
+      right: 5vw;
+      width: calc(28.8rem / 1.75);
+      height: calc(110rem / 1.75);
+    }
   }
 `
 

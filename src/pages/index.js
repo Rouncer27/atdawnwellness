@@ -3,13 +3,13 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/allSite/seo/seo"
 
-import TopQuote from "../components/TopQuote"
-import IntroCrop from "../components/IntroCrop"
+import TopQuote from "../components/shared/TopQuote"
+import IntroCrop from "../components/homePage/IntroCrop"
 import HeroDivider from "../components/homePage/HeroDivider"
 import ContentCircleImg from "../components/homePage/ContentCircleImg"
-import ServicesList from "../components/ServicesList"
-import ImageGallery from "../components/ImageGallery"
-import Testimonials from "../components/Testimonials"
+import ServicesList from "../components/homePage/ServicesList"
+import ImageGallery from "../components/homePage/ImageGallery"
+import Testimonials from "../components/shared/Testimonials"
 
 const IndexPage = props => {
   const {

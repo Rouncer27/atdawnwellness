@@ -6,7 +6,7 @@ import {
   headlineThree,
   headlineThreeSmall,
   bodyCopy,
-} from "../Utilities"
+} from "../../Utilities"
 
 const CircleImgQuoteSection = styled.div`
   padding: 5rem 0;
@@ -21,6 +21,12 @@ const CircleImgQuoteSection = styled.div`
 
   .quote-image {
     align-self: center;
+    width: calc(50% - 5rem);
+    margin: 0 5rem 2.5rem;
+
+    @media (min-width: 768px) {
+      width: calc(30% - 5rem);
+    }
 
     @media (min-width: 1025px) {
       width: calc(30% - 10rem);
@@ -28,9 +34,13 @@ const CircleImgQuoteSection = styled.div`
     }
 
     &__square {
-      border: solid 2rem #e8ecf5;
+      border: solid 1rem #e8ecf5;
       border-radius: 50%;
       overflow: hidden;
+
+      @media (min-width: 1025px) {
+        border: solid 2rem #e8ecf5;
+      }
     }
   }
 

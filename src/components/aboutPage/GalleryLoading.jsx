@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import ImageMasonry from "react-image-masonry"
 import Img from "gatsby-image"
-import { headlineOne } from "../Utilities"
+import { headlineOne } from "../../Utilities"
 
 const GalleryLoadingSection = styled.section`
   padding-bottom: 10rem;
@@ -19,6 +19,34 @@ const GalleryLoadingSection = styled.section`
   .gallery-image {
     padding: 0.5rem;
   }
+
+  .gallery-wrapper {
+    max-width: 100rem;
+    margin: 5rem auto;
+  }
+
+  ${"" /* .gallery-container {
+    display: flex !important;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @media (min-width: 768px) {
+      display: block !important;
+    }
+  }
+
+  .react-image-masonry-col {
+    width: 50% !important;
+    float: none !important;
+
+    @media (min-width: 768px) {
+      width: 33.33% !important;
+      float: left !important;
+    }
+    @media (min-width: 1025px) {
+      width: 33.33% !important;
+    }
+  } */}
 `
 
 const GalleryLoading = ({ data }) => {
@@ -27,12 +55,12 @@ const GalleryLoading = ({ data }) => {
       <div className="main-title">
         <h2>Find Us Here</h2>
       </div>
-      <div>
+      <div className="gallery-wrapper">
         <ImageMasonry
           numCols={3}
           animate={true}
           className="gallery-container"
-          containerWidth={"1000px"}
+          containerWidth={"100%"}
           scrollable={false}
         >
           {data.acf._adw_lig_gallery.map((img, index) => {

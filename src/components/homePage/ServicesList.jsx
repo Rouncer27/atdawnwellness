@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { medWrapper, buttonOne } from "../Utilities"
+import { medWrapper, buttonOne } from "../../Utilities"
 
 import ServiceItem from "./ServiceItem"
 import { Link } from "gatsby"

@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/allSite/seo/seo"
 
-import TopQuote from "../components/TopQuote"
+import TopQuote from "../components/shared/TopQuote"
 import Intro from "../components/contactPage/Intro"
 import LetChat from "../components/contactPage/LetChat"
 import Feedback from "../components/contactPage/Feedback"

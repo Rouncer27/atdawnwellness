@@ -8,7 +8,7 @@ import {
   headlineThreeSmall,
   colors,
   bodyCopy,
-} from "../Utilities"
+} from "../../Utilities"
 
 const IntroCropStyled = styled.section`
   @media (min-width: 768px) {
@@ -140,23 +140,25 @@ const IntroCropStyled = styled.section`
 `
 
 const onLoadEvent = (divHeight, sideDiv) => {
+  if (divHeight.current === null || sideDiv.current === null) return
   const topHeight = divHeight.current.offsetHeight - 5
   sideDiv.current.style.width = `${divHeight.current.offsetHeight}px`
   sideDiv.current.style.top = `${topHeight}px`
 }
 
 const changeHeightOnWinderResize = (divHeight, sideDiv) => {
+  if (divHeight.current === null || sideDiv.current === null) return
   const topHeight = divHeight.current.offsetHeight - 5
   sideDiv.current.style.width = `${divHeight.current.offsetHeight}px`
   sideDiv.current.style.top = `${topHeight}px`
 }
 
 const addWindowResizeEventListener = (divHeight, sideDiv) => {
-  if (typeof window !== "undefined") {
-    window.addEventListener("resize", () => {
-      changeHeightOnWinderResize(divHeight, sideDiv)
-    })
-  }
+  if (divHeight.current === null || sideDiv.current === null) return
+  if (typeof window === "undefined") return
+  window.addEventListener("resize", () => {
+    changeHeightOnWinderResize(divHeight, sideDiv)
+  })
 }
 
 const IntroCrop = ({ data }) => {

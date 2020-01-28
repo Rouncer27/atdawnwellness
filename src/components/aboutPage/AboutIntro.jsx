@@ -77,13 +77,11 @@ const AboutIntroStyled = styled.section`
   }
 
   .mind-body-soul {
-    position: absolute;
+    position: relative;
     width: 100%;
-    top: 90%;
-    right: -90%;
+    padding-top: 5rem;
     transform-origin: left center;
-    transform: rotate(-90deg);
-    text-align: left;
+    text-align: center;
 
     @media (min-width: 768px) {
       position: relative;
@@ -92,17 +90,20 @@ const AboutIntroStyled = styled.section`
       width: 100%;
       padding-top: 5rem;
       transform: rotate(0deg);
-      text-align: center;
     }
 
     @media (min-width: 1025px) {
       position: absolute;
-      top: 50%;
-      right: -100%;
+      top: 55%;
+      right: -95%;
       width: 100%;
       padding-top: 0;
       transform: rotate(-90deg);
       text-align: left;
+    }
+
+    @media (min-width: 1150px) {
+      right: -100%;
     }
 
     p {
@@ -113,6 +114,7 @@ const AboutIntroStyled = styled.section`
   }
 
   .plant {
+    display: none;
     position: absolute;
     bottom: 1.5rem;
     right: 5vw;
@@ -121,6 +123,29 @@ const AboutIntroStyled = styled.section`
     transform-origin: center center;
     transform: rotate(15deg);
     z-index: -1;
+
+    @media (min-width: 768px) {
+      display: block;
+      bottom: 10rem;
+      right: -4vw;
+      width: calc(74.8rem / 3);
+      height: calc(100rem / 3);
+      transform: rotate(25deg);
+    }
+
+    @media (min-width: 1025px) {
+      bottom: 1.5rem;
+      right: 0vw;
+      width: calc(74.8rem / 2.2);
+      height: calc(100rem / 2.2);
+    }
+
+    @media (min-width: 1150px) {
+      bottom: 1.5rem;
+      right: 7.5vw;
+      width: calc(74.8rem / 2.5);
+      height: calc(100rem / 2.5);
+    }
   }
 `
 

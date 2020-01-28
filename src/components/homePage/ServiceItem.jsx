@@ -1,10 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import { headlineTwo, colors, bodyCopy } from "../Utilities"
+import { headlineTwo, colors, bodyCopy } from "../../Utilities"
 
-import StonesSvg from "../elelments/svgs/StonesSvg"
-import PelvicSvg from "../elelments/svgs/PelvicSvg"
-import NaturopathSvg from "../elelments/svgs/NaturopathSvg"
+import StonesSvg from "../../elelments/svgs/StonesSvg"
+import PelvicSvg from "../../elelments/svgs/PelvicSvg"
+import NaturopathSvg from "../../elelments/svgs/NaturopathSvg"
 
 const ServiceItemStyled = styled.div`
   text-align: center;

@@ -5,11 +5,23 @@ import { headlineOne, bodyCopy, fontSizer, fonts } from "../../Utilities"
 
 const WhereFindSection = styled.section`
   position: relative;
+  min-height: 40rem;
+
+  @media (min-width: 768px) {
+    min-height: 50rem;
+  }
+
   @media (min-width: 1025px) {
     min-height: 70rem;
     margin-left: 15%;
   }
   .wrapper {
+    width: 100%;
+    padding: 5rem 7.5rem;
+
+    @media (min-width: 768px) {
+      padding: 5rem 7.5rem;
+    }
     @media (min-width: 1025px) {
       max-width: 50rem;
       padding: 5rem 7.5rem;

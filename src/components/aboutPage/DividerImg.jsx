@@ -9,6 +9,14 @@ const DividerImgSection = styled.div`
   }
 
   .img-container {
+    width: calc(100% - 1rem);
+    margin: 1rem 0.5rem;
+
+    @media (min-width: 768px) {
+      width: calc(50% - 1rem);
+      margin: 1rem 0.5rem;
+    }
+
     @media (min-width: 1025px) {
       width: calc(50% - 1rem);
       margin: 1rem 0.5rem;

@@ -10,7 +10,7 @@ import {
   headlineThreeSmall,
   bodyCopy,
   headlineOne,
-} from "../Utilities"
+} from "../../Utilities"
 
 const settings = {
   slidesToShow: 1,
@@ -41,7 +41,12 @@ const PeopleBehindSection = styled.section`
 
   .bioSlider {
     width: 100%;
+    max-width: 40rem;
     margin: 0 auto;
+
+    @media (min-width: 768px) {
+      max-width: 60rem;
+    }
 
     @media (min-width: 1025px) {
       max-width: 70rem;
@@ -51,27 +56,46 @@ const PeopleBehindSection = styled.section`
 
 const PersonImageContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+
+  @media (min-width: 768px) {
+  }
+  @media (min-width: 1025px) {
+  }
 `
 
 const PersonImage = styled.div`
-  width: 20rem;
-  height: 20rem;
+  width: 12vw;
+  height: 12vw;
   margin: 2rem 1rem;
-  border: solid 2rem #a5c0c4;
+  border: solid 0.5vw #a5c0c4;
   border-radius: 50%;
   overflow: hidden;
+
+  @media (min-width: 768px) {
+    width: 15vw;
+    height: 15vw;
+    border: solid 0.75vw #a5c0c4;
+  }
+  @media (min-width: 1025px) {
+    width: 15vw;
+    max-width: 20rem;
+    height: 15vw;
+    max-height: 20rem;
+  }
 
   &:hover {
     cursor: pointer;
   }
 
   &.navActive {
-    border: solid 2rem #437a7e;
+    border: solid 1vw #437a7e;
   }
 `
 
 const PersonBio = styled.div`
+  width: 100%;
   h3 {
     ${headlineThreeSmall};
     color: #b7aa9b;

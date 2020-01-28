@@ -3,13 +3,13 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/allSite/seo/seo"
 
-import TopQuote from "../components/TopQuote"
+import TopQuote from "../components/shared/TopQuote"
 import AboutIntro from "../components/aboutPage/AboutIntro"
 import DividerImages from "../components/aboutPage/DividerImg"
-import PeopleBehind from "../components/PeopleBehind"
+import PeopleBehind from "../components/aboutPage/PeopleBehind"
 import WhereFind from "../components/aboutPage/WhereFind"
-import CircleImgQuote from "../components/CircleImgQuote"
-import GalleryLoading from "../components/GalleryLoading"
+import CircleImgQuote from "../components/aboutPage/CircleImgQuote"
+import GalleryLoading from "../components/aboutPage/GalleryLoading"
 
 const About = props => {
   const { topQuote } = props.data

@@ -3,11 +3,11 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/allSite/seo/seo"
 
-import TopQuote from "../components/TopQuote"
+import TopQuote from "../components/shared/TopQuote"
 import IntroSec from "../components/servicesPage/IntroSec"
 import ServicesDes from "../components/servicesPage/ServicesDes"
 import ServicesIcons from "../components/servicesPage/ServicesIcons"
-import Testimonials from "../components/Testimonials"
+import Testimonials from "../components/shared/Testimonials"
 
 const Services = props => {
   const {

@@ -10,7 +10,7 @@ import {
   colors,
   fontSizer,
   fonts,
-} from "../Utilities"
+} from "../../Utilities"
 
 const settings = {
   slidesToShow: 1,
