@@ -12,13 +12,29 @@ const LetChatSection = styled.section`
   }
 
   .google-map {
-    width: calc(50% - 10rem);
-    margin: 5rem;
-    border: solid 3rem rgba(241, 241, 241, 0.5);
+    align-self: center;
+    width: calc(100% - 5rem);
+    margin: 2.5rem;
+    border: solid 1.5rem rgba(241, 241, 241, 0.5);
+
+    @media (min-width: 768px) {
+      width: calc(100% - 30rem);
+      margin: 5rem 15rem;
+      border: solid 3rem rgba(241, 241, 241, 0.5);
+    }
+
+    @media (min-width: 1025px) {
+      width: calc(50% - 10rem);
+      margin: 5rem;
+      border: solid 3rem rgba(241, 241, 241, 0.5);
+    }
   }
 
   .form-container {
-    width: 50%;
+    width: 100%;
+    @media (min-width: 1025px) {
+      width: 50%;
+    }
   }
 
   .main-title,

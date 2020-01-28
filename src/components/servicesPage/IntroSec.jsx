@@ -11,6 +11,9 @@ import {
 } from "../../Utilities"
 
 const AboutIntroStyled = styled.section`
+  @media (min-width: 1025px) {
+    padding-top: 10rem;
+  }
   .wrapper {
     ${standardWrapper};
     position: relative;

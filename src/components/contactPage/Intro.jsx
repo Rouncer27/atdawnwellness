@@ -7,18 +7,18 @@ import {
   headlineThree,
   colors,
   bodyCopy,
-  medWrapper,
+  standardWrapper,
   buttonOne,
 } from "../../Utilities"
 
 const IntroStyled = styled.section`
   @media (min-width: 1025px) {
-    padding-top: 15rem;
+    padding-top: 10rem;
   }
 
   .wrapper {
     position: relative;
-    ${medWrapper};
+    ${standardWrapper};
   }
 
   .content-container {
@@ -63,7 +63,7 @@ const IntroStyled = styled.section`
   .close-crop-image {
     align-self: flex-end;
     width: 100%;
-    max-width: 25rem;
+    max-width: 40rem;
     padding: 2rem;
 
     @media (min-width: 768px) {
@@ -76,13 +76,13 @@ const IntroStyled = styled.section`
   }
 
   .mind-body-soul {
-    position: absolute;
+    position: relative;
     width: 100%;
-    top: 90%;
-    right: -90%;
+    top: auto;
+    right: auto;
     transform-origin: left center;
-    transform: rotate(-90deg);
-    text-align: left;
+    transform: rotate(0deg);
+    text-align: center;
 
     @media (min-width: 768px) {
       position: relative;
@@ -96,7 +96,7 @@ const IntroStyled = styled.section`
 
     @media (min-width: 1025px) {
       position: absolute;
-      top: 70%;
+      top: 77.5%;
       right: -100%;
       width: 100%;
       padding-top: 0;

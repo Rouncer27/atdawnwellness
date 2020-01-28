@@ -9,13 +9,24 @@ const FeedbackSection = styled.section`
   margin: 3rem auto;
   .wrapper {
     ${medWrapper};
-    padding: 10rem;
+
     background: #c3e6d7;
+
+    @media (min-width: 768px) {
+      padding: 5rem;
+    }
+
+    @media (min-width: 1025px) {
+      padding: 10rem;
+    }
   }
 
   .title {
     width: 100%;
-    text-align: center;
+
+    @media (min-width: 768px) {
+      text-align: center;
+    }
 
     h2 {
       ${headlineOne};

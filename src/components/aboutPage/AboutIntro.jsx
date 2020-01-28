@@ -16,6 +16,10 @@ const AboutIntroStyled = styled.section`
   position: relative;
   overflow: hidden;
 
+  @media (min-width: 1025px) {
+    padding-top: 10rem;
+  }
+
   .wrapper {
     position: relative;
     ${standardWrapper};
