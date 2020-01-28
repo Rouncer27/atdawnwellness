@@ -53,9 +53,18 @@ const ServiceIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: calc(50% - 2rem);
+  min-height: 15rem;
+  margin: 5rem 1rem;
+  padding: 3rem;
   text-align: center;
   transition: all 0.3s ease;
   border: solid 0.2rem #338383;
+
+  @media (min-width: 768px) {
+    width: calc(33% - 6rem);
+    min-height: 17.5rem;
+  }
 
   @media (min-width: 1025px) {
     width: calc(25% - 6rem);
@@ -143,6 +152,14 @@ const SingleDescription = styled.div`
   visibility: hidden;
   opacity: 0;
 
+  @media (min-width: 768px) {
+    min-height: 50rem;
+  }
+
+  @media (min-width: 1025px) {
+    min-height: 57.5rem;
+  }
+
   p {
     ${bodyCopy};
     color: #505b61;
@@ -158,12 +175,26 @@ const SingleDescription = styled.div`
   }
 
   .iconImg-wrapper {
+    display: none;
     width: 30%;
     max-width: 30rem;
 
+    @media (min-width: 768px) {
+      display: block;
+      width: 30%;
+      max-width: 30rem;
+    }
+
     .image-container {
-      height: 30rem;
       overflow: hidden;
+
+      @media (min-width: 768px) {
+        height: 25rem;
+      }
+
+      @media (min-width: 1025px) {
+        height: 30rem;
+      }
       img {
         max-width: 100%;
         max-height: 100%;
@@ -200,10 +231,14 @@ const SingleDescription = styled.div`
   .content-wrapper {
     align-self: center;
     position: relative;
-    width: 70%;
-    max-width: 70rem;
+    width: 100%;
     padding: 5rem 7.5rem;
     background: #c3e6d7;
+
+    @media (min-width: 768px) {
+      width: 70%;
+      max-width: 70rem;
+    }
   }
 
   .button-close {

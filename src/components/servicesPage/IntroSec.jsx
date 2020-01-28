@@ -12,8 +12,8 @@ import {
 
 const AboutIntroStyled = styled.section`
   .wrapper {
-    position: relative;
     ${standardWrapper};
+    position: relative;
   }
 
   .content-container {
@@ -44,7 +44,7 @@ const AboutIntroStyled = styled.section`
 
     @media (min-width: 768px) {
       position: absolute;
-      bottom: 0;
+      bottom: 15%;
       left: -3.5rem;
       transform-origin: left center;
       transform: rotate(-90deg);
@@ -72,28 +72,16 @@ const AboutIntroStyled = styled.section`
   }
 
   .mind-body-soul {
-    position: absolute;
+    position: relative;
     width: 100%;
-    top: 90%;
-    right: -90%;
+    padding-top: 5rem;
     transform-origin: left center;
-    transform: rotate(-90deg);
-    text-align: left;
-
-    @media (min-width: 768px) {
-      position: relative;
-      top: auto;
-      right: auto;
-      width: 100%;
-      padding-top: 5rem;
-      transform: rotate(0deg);
-      text-align: center;
-    }
+    text-align: center;
 
     @media (min-width: 1025px) {
       position: absolute;
-      top: 75%;
-      right: -100%;
+      top: 100%;
+      right: -95%;
       width: 100%;
       padding-top: 0;
       transform: rotate(-90deg);

@@ -26,6 +26,8 @@ const SingleService = styled.div`
   }
 
   .content {
+    width: calc(100%);
+
     @media (min-width: 768px) {
       width: calc(50%);
       padding: 1rem 7.5rem;
@@ -44,6 +46,8 @@ const SingleService = styled.div`
   }
 
   .image {
+    width: calc(100%);
+
     @media (min-width: 768px) {
       width: calc(50%);
     }
