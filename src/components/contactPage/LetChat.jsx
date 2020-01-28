@@ -7,6 +7,11 @@ import InputTextArea from "../allSite/formParts/InputTextArea"
 import { medWrapper, headlineOne, buttonOne } from "../../Utilities"
 import { submitTheForm } from "../allSite/formParts/FormUtilities/formFunctions"
 
+// models //
+import SubmitDisplay from "../allSite/formParts/FormUtilities/SubmitDisplay"
+import ErrorDisplay from "../allSite/formParts/FormUtilities/ErrorDisplay"
+import SuccessLetsChat from "../allSite/formParts/FormUtilities/SuccessLetsChat"
+
 const LetChatSection = styled.section`
   .wrapper {
     ${medWrapper};
@@ -106,10 +111,6 @@ const LetChat = ({ data }) => {
     data.acf._adw_contact_chat_google_image.localFile.childImageSharp.fluid
   const imgAlt = data.acf._adw_contact_chat_google_image.alt_text
   const googleMapUrl = data.acf._adw_contact_chat_google_url
-
-  console.log("Lets Chat:", formData)
-  console.log("Lets Chat:", formStatus)
-
   return (
     <LetChatSection>
       <div className="wrapper">
@@ -187,6 +188,16 @@ const LetChat = ({ data }) => {
           </form>
         </div>
       </div>
+      {formStatus.submitting && <SubmitDisplay />}
+      {formStatus.errorWarnDisplay && (
+        <ErrorDisplay formStatus={formStatus} stateSetter={updateFormStatus} />
+      )}
+      {formStatus.success && (
+        <SuccessLetsChat
+          updateFormData={updateFormData}
+          updateFormStatus={updateFormStatus}
+        />
+      )}
     </LetChatSection>
   )
 }

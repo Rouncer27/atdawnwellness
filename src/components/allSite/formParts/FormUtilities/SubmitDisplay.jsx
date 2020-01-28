@@ -2,9 +2,9 @@ import React from "react"
 import styled from "styled-components"
 import Lottie from "react-lottie"
 
-import { colors, buttonOne } from "../../../Utilities"
+import { colors, buttonOne } from "../../../../Utilities"
 
-import * as success from "../../../elements/lottieAnimations/loading.json"
+import * as success from "../../../../elelments/lottieAnimations/loading.json"
 
 const defaultOptions = {
   loop: true,

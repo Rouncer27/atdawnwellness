@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
 import Lottie from "react-lottie"
-import * as errorWarning from "../../../elements/lottieAnimations/checked-done.json"
+import * as errorWarning from "../../../../elelments/lottieAnimations/checked-done.json"
 
-import { colors, buttonOne } from "../../../Utilities"
+import { colors, buttonOne } from "../../../../Utilities"
 
 const defaultOptions = {
   loop: false,
@@ -50,11 +50,10 @@ const SuccessDisplayStyled = styled.div`
 
 const clearTheForm = (updateFormData, updateFormStatus) => {
   updateFormData({
-    fullNameContact: "",
-    yourCompanyContact: "",
-    phoneContact: "",
-    emailContact: "",
-    detailsContact: "",
+    fbName: "",
+    fbNumber: "",
+    fbEmail: "",
+    fbMessage: "",
   })
   updateFormStatus({
     submitting: false,
@@ -64,7 +63,7 @@ const clearTheForm = (updateFormData, updateFormStatus) => {
   })
 }
 
-const SuccessDisplayContact = ({ updateFormData, updateFormStatus }) => {
+const SuccessDisplay = ({ updateFormData, updateFormStatus }) => {
   return (
     <SuccessDisplayStyled>
       <div className="submit-wrapper">
@@ -85,4 +84,4 @@ const SuccessDisplayContact = ({ updateFormData, updateFormStatus }) => {
   )
 }
 
-export default SuccessDisplayContact
+export default SuccessDisplay

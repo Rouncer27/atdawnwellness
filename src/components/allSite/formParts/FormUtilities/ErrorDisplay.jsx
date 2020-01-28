@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
 import Lottie from "react-lottie"
-import * as errorWarning from "../../../elements/lottieAnimations/error-cross.json"
+import * as errorWarning from "../../../../elelments/lottieAnimations/error-cross.json"
 
-import { colors, buttonOne } from "../../../Utilities"
+import { colors, buttonOne } from "../../../../Utilities"
 
 const defaultOptions = {
   loop: false,

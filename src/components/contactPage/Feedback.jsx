@@ -6,6 +6,11 @@ import InputText from "../allSite/formParts/InputText"
 import InputTextArea from "../allSite/formParts/InputTextArea"
 import { submitTheForm } from "../allSite/formParts/FormUtilities/formFunctions"
 
+// models //
+import SubmitDisplay from "../allSite/formParts/FormUtilities/SubmitDisplay"
+import ErrorDisplay from "../allSite/formParts/FormUtilities/ErrorDisplay"
+import SuccessFeedback from "../allSite/formParts/FormUtilities/SuccessFeedback"
+
 const FeedbackSection = styled.section`
   margin: 3rem auto;
   .wrapper {
@@ -105,9 +110,6 @@ const Feedback = ({ data }) => {
     submitTheForm(e, formId, formData, updateFormStatus)
   }
 
-  console.log("feedback:", formData)
-  console.log("feedback:", formStatus)
-
   const title = data.acf._adw_contact_feed_title
   const content = data.acf._adw_contact_feed_content
   const btnText = data.acf._adw_contact_feed_btn_text
@@ -190,6 +192,16 @@ const Feedback = ({ data }) => {
           </form>
         </div>
       </div>
+      {formStatus.submitting && <SubmitDisplay />}
+      {formStatus.errorWarnDisplay && (
+        <ErrorDisplay formStatus={formStatus} stateSetter={updateFormStatus} />
+      )}
+      {formStatus.success && (
+        <SuccessFeedback
+          updateFormData={updateFormData}
+          updateFormStatus={updateFormStatus}
+        />
+      )}
     </FeedbackSection>
   )
 }
