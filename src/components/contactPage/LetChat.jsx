@@ -61,6 +61,11 @@ const LetChatSection = styled.section`
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
+
+    input,
+    textarea {
+      background-color: #c3e6d7;
+    }
   }
 
   .form-submit {

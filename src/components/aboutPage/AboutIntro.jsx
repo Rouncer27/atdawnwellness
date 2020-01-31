@@ -52,8 +52,8 @@ const AboutIntroStyled = styled.section`
 
     @media (min-width: 768px) {
       position: absolute;
-      bottom: -5rem;
-      left: -3.5rem;
+      bottom: -7.5%;
+      left: -5rem;
       transform-origin: left center;
       transform: rotate(-90deg);
       text-align: right;

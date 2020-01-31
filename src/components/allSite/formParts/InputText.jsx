@@ -51,7 +51,7 @@ const InputFieldStyled = styled.div`
     background-color: ${colors.white};
 
     &::placeholder {
-      color: ${colors.ironGrey};
+      color: ${colors.black};
     }
 
     &:focus {
