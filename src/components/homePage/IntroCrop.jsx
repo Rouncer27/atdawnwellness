@@ -10,6 +10,8 @@ import {
   bodyCopy,
 } from "../../Utilities"
 
+import SvgWritting from "./SvgWritting"
+
 const IntroCropStyled = styled.section`
   @media (min-width: 768px) {
     padding-top: 0;
@@ -124,7 +126,7 @@ const IntroCropStyled = styled.section`
     @media (min-width: 1025px) {
       position: absolute;
       top: 90%;
-      right: -100%;
+      right: calc(-100% - 2rem);
       width: 100%;
       padding-top: 0;
       transform: rotate(-90deg);
@@ -135,6 +137,14 @@ const IntroCropStyled = styled.section`
       ${headlineThree};
       margin: 0;
       color: #c3e6d7;
+    }
+
+    svg {
+      width: 30rem;
+      @media (min-width: 1025px) {
+        width: 48rem;
+        margin-left: 4rem;
+      }
     }
   }
 `
@@ -196,8 +206,11 @@ const IntroCrop = ({ data }) => {
         <div className="close-crop-image">
           <Img fluid={imgFluid} alt={imgAlt} />
         </div>
-        <div className="mind-body-soul">
+        {/* <div className="mind-body-soul">
           <p>mind. body. soul.</p>
+        </div> */}
+        <div className="mind-body-soul">
+          <SvgWritting />
         </div>
       </div>
     </IntroCropStyled>
