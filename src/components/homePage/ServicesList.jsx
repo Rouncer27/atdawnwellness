@@ -1,5 +1,8 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
+import gsap from "gsap"
+import ScrollMagic from "scrollmagic"
+
 import { medWrapper, buttonOne } from "../../Utilities"
 
 import ServiceItem from "./ServiceItem"
@@ -31,9 +34,38 @@ const ServicesListStyled = styled.section`
 `
 
 const ServicesList = ({ data }) => {
+  useEffect(() => {
+    const controller = new ScrollMagic.Controller()
+    const timeLine = gsap
+      .timeline()
+      .fromTo(
+        "#ServiceItem",
+        { autoAlpha: 0, y: 100 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1,
+          stagger: {
+            from: "center",
+            each: 0.25,
+          },
+        }
+      )
+      .fromTo(".serviceLink", { autoAlpha: 0 }, { autoAlpha: 1, duration: 1 })
+    timeLine.pause()
+    new ScrollMagic.Scene({
+      duration: 0,
+      offset: 0,
+      triggerElement: "#servicesList",
+    })
+      .on("enter", function(e) {
+        timeLine.play()
+      })
+      .addTo(controller)
+  }, [])
   return (
     <ServicesListStyled>
-      <div className="wrapper">
+      <div id="servicesList" className="wrapper">
         <div className="servicesContainer">
           {data.acf._adw_srl_services_list.map((service, index) => {
             return <ServiceItem key={index} data={service} />

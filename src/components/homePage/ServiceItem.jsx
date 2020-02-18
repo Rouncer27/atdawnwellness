@@ -57,7 +57,7 @@ const ServiceItem = ({ data }) => {
     )
 
   return (
-    <ServiceItemStyled>
+    <ServiceItemStyled id="ServiceItem">
       {ServiceIcon && <div className="serviceIcon">{ServiceIcon}</div>}
       <div className="title">
         <h3>{data.service_title}</h3>
