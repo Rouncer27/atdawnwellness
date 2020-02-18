@@ -1,6 +1,8 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
+import gsap from "gsap"
+import ScrollMagic from "scrollmagic"
 import { medWrapper, headlineTwo, bodyCopy } from "../../Utilities"
 
 import StonesSvg from "../../elelments/svgs/StonesSvg"
@@ -72,8 +74,95 @@ const SingleService = styled.div`
 
 const ServicesDes = ({ data }) => {
   const allServices = data.acf._adw_ser_services
+
+  useEffect(() => {
+    const controller1 = new ScrollMagic.Controller()
+    const timeLine1 = gsap
+      .timeline()
+      .add("start")
+      .fromTo(
+        "#singleService-1 .content",
+        { autoAlpha: 0, x: 100 },
+        { autoAlpha: 1, x: 0, duration: 1 },
+        "start"
+      )
+      .fromTo(
+        "#singleService-1 .image",
+        { autoAlpha: 0, x: -100 },
+        { autoAlpha: 1, x: 0, duration: 1 },
+        "start"
+      )
+
+    timeLine1.pause()
+    new ScrollMagic.Scene({
+      duration: 0,
+      offset: 0,
+      triggerElement: "#singleService-1",
+    })
+      .on("enter", function(e) {
+        timeLine1.play()
+      })
+      .addTo(controller1)
+
+    const controller2 = new ScrollMagic.Controller()
+    const timeLine2 = gsap
+      .timeline()
+      .add("start")
+      .fromTo(
+        "#singleService-2 .content",
+        { autoAlpha: 0, x: -100 },
+        { autoAlpha: 1, x: 0, duration: 1 },
+        "start"
+      )
+      .fromTo(
+        "#singleService-2 .image",
+        { autoAlpha: 0, x: 100 },
+        { autoAlpha: 1, x: 0, duration: 1 },
+        "start"
+      )
+
+    timeLine2.pause()
+    new ScrollMagic.Scene({
+      duration: 0,
+      offset: 0,
+      triggerElement: "#singleService-2",
+    })
+      .on("enter", function(e) {
+        timeLine2.play()
+      })
+      .addTo(controller2)
+
+    const controller3 = new ScrollMagic.Controller()
+    const timeLine3 = gsap
+      .timeline()
+      .add("start")
+      .fromTo(
+        "#singleService-3 .content",
+        { autoAlpha: 0, x: 100 },
+        { autoAlpha: 1, x: 0, duration: 1 },
+        "start"
+      )
+      .fromTo(
+        "#singleService-3 .image",
+        { autoAlpha: 0, x: -100 },
+        { autoAlpha: 1, x: 0, duration: 1 },
+        "start"
+      )
+
+    timeLine3.pause()
+    new ScrollMagic.Scene({
+      duration: 0,
+      offset: 0,
+      triggerElement: "#singleService-3",
+    })
+      .on("enter", function(e) {
+        timeLine3.play()
+      })
+      .addTo(controller3)
+  }, [])
+
   return (
-    <ServicesDesSection>
+    <ServicesDesSection id="servicesDes">
       <div className="wrapper">
         <div>
           {allServices.map((service, index) => {
@@ -88,7 +177,7 @@ const ServicesDes = ({ data }) => {
             }
 
             return (
-              <SingleService key={index}>
+              <SingleService id={`singleService-${index + 1}`} key={index}>
                 <div className="content">
                   <div>
                     <h2>{service.title}</h2>

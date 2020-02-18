@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
+import gsap from "gsap"
 import {
   standardWrapper,
   headlineOne,
@@ -95,6 +96,10 @@ const AboutIntroStyled = styled.section`
       ${headlineThree};
       margin: 0;
       color: #c3e6d7;
+
+      span {
+        display: inline-block;
+      }
     }
   }
 `
@@ -103,6 +108,41 @@ const IntroSec = ({ data }) => {
   const title = data.acf._adw_ser_intro_title
   const sideTitle = data.acf._adw_ser_side_title
   const content = data.acf._adw_ser_content
+  useEffect(() => {
+    gsap
+      .timeline({ delay: 0.5 })
+      .fromTo(
+        ".mind-body-soul p span",
+        { autoAlpha: 0, scale: 2.5, transformOrigin: "50% 50%" },
+        {
+          autoAlpha: 1,
+          scale: 1,
+          duration: 1,
+          stagger: {
+            each: 0.5,
+          },
+        }
+      )
+      .add("text")
+      .fromTo(
+        ".main-title",
+        { autoAlpha: 0, y: 100 },
+        { autoAlpha: 1, y: 0, duration: 1 },
+        "text-=1.5"
+      )
+      .fromTo(
+        ".para-content",
+        { autoAlpha: 0, y: 100 },
+        { autoAlpha: 1, y: 0, duration: 1 },
+        "text-=1"
+      )
+      .fromTo(
+        ".side-title",
+        { autoAlpha: 0, y: 100 },
+        { autoAlpha: 1, y: 0, duration: 1 },
+        "text-=0.5"
+      )
+  }, [])
   return (
     <AboutIntroStyled>
       <div className="wrapper">
@@ -121,7 +161,9 @@ const IntroSec = ({ data }) => {
           />
         </div>
         <div className="mind-body-soul">
-          <p>mind. body. soul.</p>
+          <p>
+            <span>mind.</span> <span>body.</span> <span>soul.</span>
+          </p>
         </div>
       </div>
     </AboutIntroStyled>
