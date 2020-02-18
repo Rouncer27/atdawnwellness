@@ -22,6 +22,7 @@ import RaindropSvg from "../../elelments/svgs/RaindropSvg"
 import RelaxSvg from "../../elelments/svgs/RelaxSvg"
 import ScrubsSvg from "../../elelments/svgs/ScrubsSvg"
 import CraniosacralSvg from "../../elelments/svgs/CraniosacralSvg"
+import LymphaticSvg from "../../elelments/svgs/LymphaticSvg"
 
 const ServicesIconsSection = styled.section`
   position: relative;
@@ -361,6 +362,8 @@ const ServicesIcons = ({ data }) => {
               <ScrubsSvg />
             ) : service.icon === "pdtr" ? (
               <PdtrSvg />
+            ) : service.icon === "lymphatic" ? (
+              <LymphaticSvg />
             ) : service.icon === "craniosacral" ? (
               <CraniosacralSvg />
             ) : service.icon === "fascial" ? (
@@ -411,6 +414,10 @@ const ServicesIcons = ({ data }) => {
               <ScrubsSvg />
             ) : service.icon === "pdtr" ? (
               <PdtrSvg />
+            ) : service.icon === "lymphatic" ? (
+              <LymphaticSvg />
+            ) : service.icon === "craniosacral" ? (
+              <CraniosacralSvg />
             ) : service.icon === "fascial" ? (
               <FascialSvg />
             ) : (
