@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
+import gsap from "gsap"
+import ScrollMagic from "scrollmagic"
 import { medWrapper, headlineThreeSmall, bodyCopy } from "../../Utilities"
 
 const CircleImgQuoteSection = styled.div`
@@ -94,10 +96,45 @@ const CircleImgQuote = ({ data }) => {
   const quote = data.acf._adw_ciq_quote
   const name = data.acf._adw_ciq_name
   const quoteSec = useRef(null)
-  useEffect(() => preventTheWidows(quoteSec), [])
+  useEffect(() => {
+    preventTheWidows(quoteSec)
+    const controller = new ScrollMagic.Controller()
+    const timeLine = gsap.timeline()
+    timeLine
+      .pause()
+      .fromTo(
+        ".quote-image",
+        { autoAlpha: 0, x: -100 },
+        {
+          autoAlpha: 1,
+          x: 0,
+          duration: 1,
+        }
+      )
+      .fromTo(
+        ".quote-content",
+        { autoAlpha: 0, x: 100 },
+        {
+          autoAlpha: 1,
+          x: 0,
+          duration: 1,
+        },
+        "-=1"
+      )
+
+    new ScrollMagic.Scene({
+      duration: 0,
+      offset: 0,
+      triggerElement: "#circleImgQuote",
+    })
+      .on("enter", function(e) {
+        timeLine.play()
+      })
+      .addTo(controller)
+  }, [])
 
   return (
-    <CircleImgQuoteSection>
+    <CircleImgQuoteSection id="circleImgQuote">
       <div className="wrapper">
         <div className="quote-image">
           <div className="quote-image__square">
