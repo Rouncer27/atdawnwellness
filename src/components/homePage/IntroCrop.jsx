@@ -11,8 +11,6 @@ import {
   bodyCopy,
 } from "../../Utilities"
 
-// import SvgWritting from "./SvgWritting"
-
 const IntroCropStyled = styled.section`
   @media (min-width: 768px) {
     padding-top: 0;

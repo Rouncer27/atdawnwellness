@@ -1,6 +1,8 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
+import gsap from "gsap"
+import ScrollMagic from "scrollmagic"
 import {
   medWrapper,
   bodyCopy,
@@ -156,9 +158,43 @@ const ContentCircleImg = ({ data }) => {
   const imgFluid =
     data.acf._adw_cci_circle_image.localFile.childImageSharp.fluid
   const imgAlt = data.acf._adw_cci_circle_image.alt_text
+
+  useEffect(() => {
+    const controller = new ScrollMagic.Controller()
+    const timeLine = gsap
+      .timeline()
+      .fromTo(
+        ".content__title",
+        { autoAlpha: 0, y: 100 },
+        { autoAlpha: 1, y: 0, duration: 1 }
+      )
+      .fromTo(
+        ".content__para",
+        { autoAlpha: 0, y: 100 },
+        { autoAlpha: 1, y: 0, duration: 1 },
+        "-=0.5"
+      )
+      .fromTo(
+        ".content__side",
+        { autoAlpha: 0, x: -100 },
+        { autoAlpha: 1, x: 0, duration: 1 },
+        "-=0.25"
+      )
+    timeLine.pause()
+    new ScrollMagic.Scene({
+      duration: 0,
+      offset: 0,
+      triggerElement: "#boxTrigger",
+    })
+      .on("enter", function(e) {
+        timeLine.play()
+      })
+      .addTo(controller)
+  }, [])
+
   return (
     <ContentCircleImgContent>
-      <div className="wrapper">
+      <div id="boxTrigger" className="wrapper">
         <div className="content">
           <div className="content__title">
             <h2>{title}</h2>
