@@ -20,6 +20,10 @@ exports.onCreateWebpackConfig = ({
                 test: /scrollmagic/,
                 use: loaders.null(),
               },
+              {
+                test: /mapbox-gl/,
+                use: ["null-loader"],
+              },
             ]
           : [],
     },

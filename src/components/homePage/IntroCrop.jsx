@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
+import gsap from "gsap"
 import {
   standardWrapper,
   headlineOne,
@@ -10,7 +11,7 @@ import {
   bodyCopy,
 } from "../../Utilities"
 
-import SvgWritting from "./SvgWritting"
+// import SvgWritting from "./SvgWritting"
 
 const IntroCropStyled = styled.section`
   @media (min-width: 768px) {
@@ -137,6 +138,10 @@ const IntroCropStyled = styled.section`
       ${headlineThree};
       margin: 0;
       color: #c3e6d7;
+
+      span {
+        display: inline-block;
+      }
     }
 
     svg {
@@ -183,7 +188,43 @@ const IntroCrop = ({ data }) => {
 
   addWindowResizeEventListener(bodyDiv, sideDiv)
 
-  useEffect(() => onLoadEvent(bodyDiv, sideDiv), [])
+  useEffect(() => {
+    onLoadEvent(bodyDiv, sideDiv)
+    gsap
+      .timeline({ delay: 0.5 })
+
+      .fromTo(
+        ".mind-body-soul p span",
+        { autoAlpha: 0, scale: 2.5, transformOrigin: "50% 50%" },
+        {
+          autoAlpha: 1,
+          scale: 1,
+          duration: 1,
+          stagger: {
+            each: 0.5,
+          },
+        }
+      )
+      .add("text")
+      .fromTo(
+        ".main-title",
+        { autoAlpha: 0, y: 100 },
+        { autoAlpha: 1, y: 0, duration: 1 },
+        "text-=1.5"
+      )
+      .fromTo(
+        ".para-wrapper",
+        { autoAlpha: 0, y: 100 },
+        { autoAlpha: 1, y: 0, duration: 1 },
+        "text-=1"
+      )
+      .fromTo(
+        ".side-title",
+        { autoAlpha: 0, y: 100 },
+        { autoAlpha: 1, y: 0, duration: 1 },
+        "text-=0.5"
+      )
+  }, [])
 
   return (
     <IntroCropStyled>
@@ -206,11 +247,10 @@ const IntroCrop = ({ data }) => {
         <div className="close-crop-image">
           <Img fluid={imgFluid} alt={imgAlt} />
         </div>
-        {/* <div className="mind-body-soul">
-          <p>mind. body. soul.</p>
-        </div> */}
         <div className="mind-body-soul">
-          <SvgWritting />
+          <p>
+            <span>mind.</span> <span>body.</span> <span>soul.</span>
+          </p>
         </div>
       </div>
     </IntroCropStyled>
