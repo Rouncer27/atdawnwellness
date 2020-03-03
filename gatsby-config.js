@@ -31,6 +31,27 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "",
+        head: true,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://atdawnwellness.ca/",
+        sitemap: "https://atdawnwellness.ca/sitemap.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://atdawnwellness.ca/`,
+      },
+    },
+    {
       resolve: "gatsby-source-wordpress",
       options: {
         baseUrl: "atdawnmassage.swbdatabases.ca",
