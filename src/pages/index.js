@@ -20,10 +20,16 @@ const IndexPage = props => {
     servicesList,
     testimonials,
     imageGallery,
+    seoInfo,
   } = props.data
   return (
     <Layout location={props.location.pathname}>
-      <SEO title="Home" />
+      <SEO
+        title={seoInfo.acf._swb_theme_meta_title}
+        description={seoInfo._swb_theme_description}
+        metaImg={seoInfo._swb_theme_image.localFile.publicURL}
+        location={props.location.pathname}
+      />
       <TopQuote data={topQuote} />
       <IntroCrop data={introCrop} />
       <HeroDivider data={heroDivider} />
@@ -37,6 +43,18 @@ const IndexPage = props => {
 
 export const homeQuery = graphql`
   {
+    seoInfo: wordpressPage(slug: { eq: "home" }) {
+      acf {
+        _swb_theme_meta_title
+        _swb_theme_description
+        _swb_theme_image {
+          localFile {
+            publicURL
+          }
+        }
+      }
+    }
+
     topQuote: wordpressPage(slug: { eq: "home" }) {
       acf {
         _adw_toq_quote
