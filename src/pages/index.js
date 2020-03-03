@@ -22,12 +22,14 @@ const IndexPage = props => {
     imageGallery,
     seoInfo,
   } = props.data
+
+  console.log(seoInfo)
   return (
     <Layout location={props.location.pathname}>
       <SEO
         title={seoInfo.acf._swb_theme_meta_title}
-        description={seoInfo._swb_theme_description}
-        metaImg={seoInfo._swb_theme_image.localFile.publicURL}
+        description={seoInfo.acf._swb_theme_description}
+        metaImg={seoInfo.acf._swb_theme_image.localFile.publicURL}
         location={props.location.pathname}
       />
       <TopQuote data={topQuote} />
