@@ -19,9 +19,15 @@ const About = props => {
   const { whereToFind } = props.data
   const { circleImgQuote } = props.data
   const { loadGallery } = props.data
+  const { seoInfo } = props.data
   return (
     <Layout location={props.location.pathname}>
-      <SEO title="Home" />
+      <SEO
+        title={seoInfo.acf._swb_theme_meta_title}
+        description={seoInfo.acf._swb_theme_description}
+        metaImg={seoInfo.acf._swb_theme_image.localFile.publicURL}
+        location={props.location.pathname}
+      />
       <TopQuote data={topQuote} />
       <AboutIntro data={aboutIntro} />
       <DividerImages data={dividerImg} />
@@ -35,6 +41,18 @@ const About = props => {
 
 export const query = graphql`
   query aboutPage($id: Int!) {
+    seoInfo: wordpressPage(wordpress_id: { eq: $id }) {
+      acf {
+        _swb_theme_meta_title
+        _swb_theme_description
+        _swb_theme_image {
+          localFile {
+            publicURL
+          }
+        }
+      }
+    }
+
     topQuote: wordpressPage(wordpress_id: { eq: $id }) {
       acf {
         _adw_toq_quote

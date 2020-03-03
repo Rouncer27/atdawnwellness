@@ -9,10 +9,15 @@ import LetChat from "../components/contactPage/LetChat"
 import Feedback from "../components/contactPage/Feedback"
 
 const Contact = props => {
-  const { topQuote, intro, letsChat, feedback } = props.data
+  const { topQuote, intro, letsChat, feedback, seoInfo } = props.data
   return (
     <Layout location={props.location.pathname}>
-      <SEO title="Home" />
+      <SEO
+        title={seoInfo.acf._swb_theme_meta_title}
+        description={seoInfo.acf._swb_theme_description}
+        metaImg={seoInfo.acf._swb_theme_image.localFile.publicURL}
+        location={props.location.pathname}
+      />
       <TopQuote data={topQuote} />
       <Intro data={intro} />
       <LetChat data={letsChat} />
@@ -23,6 +28,18 @@ const Contact = props => {
 
 export const query = graphql`
   query contactPage($id: Int!) {
+    seoInfo: wordpressPage(wordpress_id: { eq: $id }) {
+      acf {
+        _swb_theme_meta_title
+        _swb_theme_description
+        _swb_theme_image {
+          localFile {
+            publicURL
+          }
+        }
+      }
+    }
+
     topQuote: wordpressPage(wordpress_id: { eq: $id }) {
       acf {
         _adw_toq_quote
