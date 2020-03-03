@@ -3,6 +3,9 @@ module.exports = {
     title: `At Dawn Wellness`,
     description: `At Dawn Wellness`,
     author: `@switchback4ever`,
+    metaImg: `src/images/at-dawn-wellness-default.png`,
+    siteLogo: `src/images/at-dawn-wellness.png`,
+    siteUrl: `https://atdawnwellness.ca/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
