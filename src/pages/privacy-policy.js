@@ -20,10 +20,12 @@ const PrivacyPolicyStyled = styled.div`
   h2 {
     ${headlineOne};
     width: 100%;
+    color: #437a7e;
   }
 
   h2 {
     ${headlineTwo};
+    color: #437a7e;
   }
 
   p,

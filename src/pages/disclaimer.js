@@ -14,6 +14,7 @@ const DisclaimerStyled = styled.div`
   h2 {
     ${headlineOne};
     width: 100%;
+    color: #437a7e;
   }
 
   p {

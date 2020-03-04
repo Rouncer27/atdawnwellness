@@ -142,7 +142,8 @@ const StyledFooter = styled.footer`
       text-align: left;
     }
 
-    p {
+    p,
+    span {
       ${bodyCopy};
       margin: 0;
       color: #bcd5c2;
