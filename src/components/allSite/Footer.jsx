@@ -1,7 +1,7 @@
 import React from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery, Link } from "gatsby"
 import { colors, bodyCopy, medWrapper, headlineFour } from "../../Utilities"
 
 const getData = graphql`
@@ -195,6 +195,9 @@ const Footer = () => {
             </div>
           </div>
           <div className="footerCopy">
+            <Link to="/privacy-policy">Privacy Policy</Link>
+            <span> | </span>
+            <Link to="/disclaimer">Disclaimer</Link>
             <p>
               Copyright © {new Date().getFullYear()} At Dawn Wellness.
               {swbCred && (
