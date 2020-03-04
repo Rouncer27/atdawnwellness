@@ -1,0 +1,6 @@
+# Redirect domain aliases to primary domain
+https://atdawnwellness.com/* https://atdawnwellness.ca/:splat 301!
+https://www.atdawnwellness.com/* https://atdawnwellness.ca/:splat 301!
+
+# Optional: Redirect default Netlify subdomain to primary domain
+https://atdawnwellness27352845.netlify.com/* https://atdawnwellness.ca/:splat 301!
