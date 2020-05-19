@@ -200,7 +200,7 @@ const Footer = () => {
             <span> | </span>
             <Link to="/disclaimer">Disclaimer</Link>
             <p>
-              Copyright © {new Date().getFullYear()} At Dawn Wellness.
+              Copyright © {new Date().getFullYear()} At Dawn Wellness.{" "}
               {swbCred && (
                 <span>
                   Designed, developed and built by{" "}
