@@ -203,9 +203,13 @@ const Footer = () => {
               Copyright © {new Date().getFullYear()} At Dawn Wellness.
               {swbCred && (
                 <span>
-                  Made in Airdrie. Designed and developed by{" "}
-                  <a href="https://switchbackcreative.ca">
-                    Switchback Creative Inc
+                  Designed, developed and built by{" "}
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://switchbackcreative.ca"
+                  >
+                    Switchback Creative
                   </a>
                   . Built with ♡ and{" "}
                   <a href="https://www.gatsbyjs.org">Gatsby</a>.
