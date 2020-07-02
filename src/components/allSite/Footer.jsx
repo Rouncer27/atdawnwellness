@@ -2,7 +2,14 @@ import React from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
 import { graphql, useStaticQuery, Link } from "gatsby"
-import { colors, bodyCopy, medWrapper, headlineFour } from "../../Utilities"
+import {
+  colors,
+  bodyCopy,
+  medWrapper,
+  headlineFour,
+  buttonOne,
+  buttonTwo,
+} from "../../Utilities"
 
 const getData = graphql`
   query footerOptions {
@@ -112,6 +119,12 @@ const StyledFooter = styled.footer`
       color: ${colors.white};
     }
 
+    a {
+      ${buttonTwo};
+      border: solid 0.2rem ${colors.white};
+      color: ${colors.white};
+    }
+
     &__hours {
       @media (min-width: 1025px) {
         max-width: 65rem;
@@ -121,6 +134,19 @@ const StyledFooter = styled.footer`
     &__address {
       @media (min-width: 1025px) {
         max-width: 65rem;
+      }
+    }
+
+    &__mailChimp {
+      margin-bottom: 2rem;
+      @media (min-width: 1025px) {
+        max-width: 65rem;
+        margin-bottom: 3rem;
+      }
+
+      p {
+        margin: 0;
+        margin-bottom: 0.75rem;
       }
     }
   }
@@ -194,7 +220,18 @@ const Footer = () => {
               <h3>Address</h3>
               <div dangerouslySetInnerHTML={{ __html: address }} />
             </div>
+            <div className="footerAddress__mailChimp">
+              <p>Stay up to date on all of the latest news and promotions.</p>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="http://eepurl.com/g1PjFP"
+              >
+                Sign Up
+              </a>
+            </div>
           </div>
+
           <div className="footerCopy">
             <Link to="/privacy-policy">Privacy Policy</Link>
             <span> | </span>
