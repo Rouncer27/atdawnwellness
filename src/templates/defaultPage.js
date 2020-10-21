@@ -2,15 +2,13 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/allSite/seo/seo"
 
-import TopQuote from "../components/shared/TopQuote"
-import IntroCrop from "../components/homePage/IntroCrop"
+import IntroCrop from "../components/DefaultPage/IntroCrop"
 import HeroDivider from "../components/homePage/HeroDivider"
 import ContentCircleImg from "../components/homePage/ContentCircleImg"
 import ContentWysiwyg from "../components/DefaultPage/ContentWysiwyg"
 
 const DefaultPage = props => {
   const {
-    topQuote,
     introCrop,
     heroDivider,
     contentCircleImg,
@@ -26,7 +24,6 @@ const DefaultPage = props => {
         metaImg={seoInfo.acf._swb_theme_image.localFile.publicURL}
         location={props.location.pathname}
       />
-      <TopQuote data={topQuote} />
       <IntroCrop data={introCrop} />
       <ContentWysiwyg content={constentWysiwyg} />
       <HeroDivider data={heroDivider} />
@@ -46,13 +43,6 @@ export const defaultPageQuery = graphql`
             publicURL
           }
         }
-      }
-    }
-
-    topQuote: wordpressPage(wordpress_id: { eq: $id }) {
-      acf {
-        _adw_toq_quote
-        _adw_toq_author
       }
     }
 
