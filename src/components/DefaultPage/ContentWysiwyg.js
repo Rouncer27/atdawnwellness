@@ -7,6 +7,8 @@ import {
   headlineOne,
   headlineTwo,
   headlineThree,
+  headlineFour,
+  headlineThreeSmall,
   fonts,
 } from "../../Utilities"
 
@@ -39,8 +41,8 @@ const WysiwygStyled = styled.div`
     width: 95%;
     margin: 1.5rem auto 2rem;
     padding: 0 2.25rem;
-    border-right: 5px solid ${colors.grey};
-    border-left: 5px solid ${colors.grey};
+    border-right: 5px solid ${colors.colorSecondary};
+    border-left: 5px solid ${colors.colorSecondary};
     font-size: 1.6rem;
     font-style: $italic;
 
@@ -56,7 +58,7 @@ const WysiwygStyled = styled.div`
       &::before,
       &::after {
         font-family: ${fonts.fontAwesome};
-        color: ${colors.secondary};
+        color: ${colors.colorSecondary};
       }
 
       &::before {
@@ -83,14 +85,14 @@ const WysiwygStyled = styled.div`
     li {
       ${bodyCopy};
       position: relative;
-      margin-bottom: 0.75em;
+      margin-bottom: 0.75rem;
       padding-left: 2rem;
       font-size: 1.6rem;
 
       &::before {
         font-family: ${fonts.fontAwesome};
         position: absolute;
-        top: 0.6rem;
+        top: 0.9rem;
         left: 0;
         padding-right: 0.5em;
         color: ${colors.colorPrimary};
@@ -126,14 +128,20 @@ const WysiwygStyled = styled.div`
   }
 
   h2 {
-    ${headlineTwo};
+    ${headlineFour};
   }
 
-  h3,
-  h4,
+  h3 {
+    ${headlineThree};
+  }
+
+  h4 {
+    ${headlineTwo}
+  }
+
   h5,
   h6 {
-    ${headlineThree}
+    ${headlineThreeSmall}
   }
 
   p {
