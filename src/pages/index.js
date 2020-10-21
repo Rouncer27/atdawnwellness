@@ -22,8 +22,6 @@ const IndexPage = props => {
     imageGallery,
     seoInfo,
   } = props.data
-
-  console.log(seoInfo)
   return (
     <Layout location={props.location.pathname}>
       <SEO
