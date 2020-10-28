@@ -19,7 +19,7 @@ const IntroCropStyled = styled.section`
 
   @media (min-width: 1025px) {
     padding-top: 20rem;
-    padding-bottom: 10rem;
+    padding-bottom: 2.5rem;
   }
 
   .wrapper {
