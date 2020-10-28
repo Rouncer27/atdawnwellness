@@ -29,6 +29,7 @@ const IntroCropStyled = styled.section`
 
   .content-container {
     position: relative;
+    max-width: 100%;
 
     @media (min-width: 768px) {
       width: calc(70% - 2rem);
