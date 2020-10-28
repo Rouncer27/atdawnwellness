@@ -9,6 +9,7 @@ import {
   headlineThreeSmall,
   colors,
   bodyCopy,
+  fontSizer,
 } from "../../Utilities"
 
 const IntroCropStyled = styled.section`
@@ -46,6 +47,7 @@ const IntroCropStyled = styled.section`
 
     h2 {
       ${headlineOne};
+      ${fontSizer(2.8, 5, 76.8, 150, 2.8)}
       color: ${colors.colorPrimary};
     }
   }
