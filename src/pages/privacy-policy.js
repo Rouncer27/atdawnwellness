@@ -70,11 +70,12 @@ const PrivacyPolicy = props => {
         <div>
           <h1>Privacy Policy</h1>
         </div>
-        <div>
-          <p>privacy officer: Dawnie McElligott</p>
-        </div>
+        
         <div>
           <h2>Protecting your personal information</h2>
+          <div>
+            <p>privacy officer: Dawnie McElligott</p>
+          </div>
           <p>
             Your privacy is important to us. It is At Dawn Wellness policy to
             respect your privacy regarding any information we may collect while
@@ -218,6 +219,8 @@ const PrivacyPolicy = props => {
             For questions or comments regarding this public website privacy
             statement please contact us by email: dawnie@atdawnwellness.ca
           </p>
+          <p>privacy officer: Dawnie McElligott</p>
+
         </div>
       </PrivacyPolicyStyled>
     </Layout>
