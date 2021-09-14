@@ -71,6 +71,9 @@ const PrivacyPolicy = props => {
           <h1>Privacy Policy</h1>
         </div>
         <div>
+          <p>privacy officer: Dawnie McElligott</p>
+        </div>
+        <div>
           <h2>Protecting your personal information</h2>
           <p>
             Your privacy is important to us. It is At Dawn Wellness policy to
