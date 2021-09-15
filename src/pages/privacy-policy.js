@@ -215,11 +215,7 @@ const PrivacyPolicy = props => {
             from our marketing lists. We will do the same with your mailing
             address and telephone number on request.
           </p>
-          <p>
-            For questions or comments regarding this public website privacy
-            statement please contact us by email: dawnie@atdawnwellness.ca
-          </p>
-          <p>privacy officer: Dawnie McElligott</p>
+          <p>For questions or comments regarding this public website privacy statement please contact the Privacy Officer, Dawnie McElligott by email: dawnie@atdawnwellness.ca</p>
 
         </div>
       </PrivacyPolicyStyled>
