@@ -192,7 +192,7 @@ const Footer = () => {
   const address = options.adw_footer_address
   const swbCred = options.swbtheme_switchback_credit === "yes" ? true : false
   const closeCrop =
-    options.adw_footer_closed_crop.localFile.childImageSharp.fluid
+    options?.adw_footer_closed_crop?.localFile?.childImageSharp?.fluid
   const closeAlt = options.adw_footer_closed_crop.alt_text
 
   return (
@@ -202,7 +202,7 @@ const Footer = () => {
           return (
             <div className="single-image" key={index}>
               <Img
-                fluid={image.image.localFile.childImageSharp.fluid}
+                fluid={image?.image?.localFile?.childImageSharp?.fluid}
                 alt={image.image.alt_text}
               />
             </div>

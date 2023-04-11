@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Img from "gatsby-image"
 import gsap from "gsap"
 import ScrollMagic from "scrollmagic"
-import { medWrapper, headlineTwo, bodyCopy } from "../../Utilities"
+import { medWrapper, headlineTwo, bodyCopy, colors } from "../../Utilities"
 
 import StonesSvg from "../../elelments/svgs/StonesSvg"
 import PelvicSvg from "../../elelments/svgs/PelvicSvg"
@@ -41,9 +41,18 @@ const SingleService = styled.div`
       color: #437a7e;
     }
 
-    p {
+    p,
+    a {
       ${bodyCopy};
       color: #505b61;
+    }
+
+    a {
+      text-decoration: underline;
+
+      &:hover {
+        color: ${colors.colorSecondary};
+      }
     }
 
     .icon-background {

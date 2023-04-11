@@ -66,7 +66,10 @@ const GalleryLoading = ({ data }) => {
           {data.acf._adw_lig_gallery.map((img, index) => {
             return (
               <div className="gallery-image">
-                <Img key={index} fluid={img.localFile.childImageSharp.fluid} />
+                <Img
+                  key={index}
+                  fluid={img?.localFile?.childImageSharp?.fluid}
+                />
               </div>
             )
           })}

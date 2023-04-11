@@ -10,6 +10,7 @@ import {
   headlineThreeSmall,
   bodyCopy,
   headlineOne,
+  colors,
 } from "../../Utilities"
 
 const settings = {
@@ -50,6 +51,10 @@ const PeopleBehindSection = styled.section`
 
     @media (min-width: 1025px) {
       max-width: 70rem;
+    }
+
+    .slick-current {
+      z-index: 99999999999 !important;
     }
   }
 `
@@ -102,9 +107,18 @@ const PersonBio = styled.div`
   }
 
   .bio-body {
-    p {
+    p,
+    a {
       ${bodyCopy};
       color: #505b61;
+    }
+
+    a {
+      text-decoration: underline;
+
+      &:hover {
+        color: ${colors.colorSecondary};
+      }
     }
   }
 
