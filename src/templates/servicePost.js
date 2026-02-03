@@ -13,9 +13,9 @@ const servicePost = props => {
   return (
     <Layout location={props.location.pathname}>
       <SEO
-        title={`${intro.acf.service_title} | At dawn Wellness`}
-        description={`${intro.acf.intro_content} | At dawn Wellness`}
-        metaImg={``}
+        title={seoInfo.acf._swb_theme_meta_title}
+        description={seoInfo.acf._swb_theme_description}
+        metaImg={seoInfo.acf._swb_theme_image.localFile.publicURL}
         location={props.location.pathname}
       />
       <TopQuote data={topQuote} />
@@ -29,6 +29,18 @@ const servicePost = props => {
 
 export const query = graphql`
   query servicesPost($id: Int!) {
+    seoInfo: wordpressAcfService(wordpress_id: { eq: $id }) {
+      acf {
+        _swb_theme_meta_title
+        _swb_theme_description
+        _swb_theme_image {
+          localFile {
+            publicURL
+          }
+        }
+      }
+    }
+
     topQuote: wordpressAcfService(wordpress_id: { eq: $id }) {
       acf {
         _adw_toq_quote
