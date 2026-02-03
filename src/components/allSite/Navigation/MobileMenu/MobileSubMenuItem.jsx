@@ -10,8 +10,8 @@ const MobileSubMenuItemStyled = styled.li`
     border-bottom: solid 0.1rem ${props => props.theme.colorPrim};
     color: ${props =>
       props.isCurrentSub
-        ? props => props.theme.white
-        : props => props.theme.colorPrim};
+        ? props => props.theme.black
+        : props => props.theme.white};
     font-family: ${props => props.theme.fontSec};
     font-weight: 500;
     background: ${props =>
@@ -29,20 +29,21 @@ const MobileSubMenuItemStyled = styled.li`
 `
 
 const MobileSubMenuItem = props => {
-  const { title, currentPageSlug, objectSlug, location } = props
-  const isCurrentSub =
-    `${currentPageSlug}/${objectSlug}` === location ||
-    `${currentPageSlug}/${objectSlug}/` === location
-      ? true
-      : false
-  const baseSlug = currentPageSlug.split("/").join("")
+  const { title, currentPageSlug, objectSlug, location, isCurrentSub } = props
+  // const isCurrentSub =
+  //   `${currentPageSlug}/${objectSlug}` === location ||
+  //   `${currentPageSlug}/${objectSlug}/` === location
+  //     ? true
+  //     : false
+
+  console.log("isCurrentSub", isCurrentSub)
 
   return (
     <MobileSubMenuItemStyled
       className="sub-menu-item"
       isCurrentSub={isCurrentSub}
     >
-      <Link className="sub-menu-item-link" to={`/${baseSlug}/${objectSlug}`}>
+      <Link className="sub-menu-item-link" to={`/${objectSlug}`}>
         {title}
       </Link>
     </MobileSubMenuItemStyled>

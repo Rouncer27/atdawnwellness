@@ -14,6 +14,8 @@ const MainNavSubMenuStyled = styled.ul`
   min-width: 17.5rem;
   margin: 0 auto;
   padding: 2rem 1rem 2rem 0;
+  background-color: #74a1a3;
+  text-align: center;
   transition: all 0.3s ease;
   visibility: hidden;
   opacity: 0;
@@ -21,6 +23,7 @@ const MainNavSubMenuStyled = styled.ul`
 `
 
 const MainNavSubMenu = ({ subItems, currentPageSlug, location }) => {
+  console.log("TREVOR subItems:", subItems)
   return (
     <MainNavSubMenuStyled className="main-nav-sub">
       {subItems.map((item, index) => {
@@ -29,6 +32,7 @@ const MainNavSubMenu = ({ subItems, currentPageSlug, location }) => {
             key={index}
             title={item.title}
             currentPageSlug={currentPageSlug}
+            isSubCurrent={item.isSubCurrent}
             objectSlug={item.object_slug}
             location={location}
           />

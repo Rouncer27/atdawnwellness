@@ -52,6 +52,8 @@ const MobileItem = props => {
   const currentPageSlug = object_slug === "home" ? "/" : `/${object_slug}`
   const isCurrent = currentPageSlug === location ? true : false
 
+  const isServicesPage = object_slug === "services"
+
   return (
     <MobileItemStyled isCurrent={isCurrent}>
       {type === "custom" ? (
@@ -73,6 +75,55 @@ const MobileItem = props => {
             location={location}
           />
         )}
+
+      {isServicesPage && (
+        <MobileSubMenu
+          items={[
+            {
+              title: "Massage Services",
+              object_slug: "services/massage-services",
+              isSubCurrent: location === "/services/massage-services",
+            },
+            {
+              title: "Crainosacral Therapy",
+              object_slug: "services/crainosacral-therapy",
+              isSubCurrent: location === "/services/crainosacral-therapy",
+            },
+            {
+              title: "Osteopath",
+              object_slug: "services/osteopath",
+              isSubCurrent: location === "/services/osteopath",
+            },
+            {
+              title: "Lymphatic Drainage",
+              object_slug: "services/lymphatic-drainage",
+              isSubCurrent: location === "/services/lymphatic-drainage",
+            },
+            {
+              title: "Acupuncture",
+              object_slug: "services/acupuncture",
+              isSubCurrent: location === "/services/acupuncture",
+            },
+            {
+              title: "Personal Trainer",
+              object_slug: "services/personal-trainer",
+              isSubCurrent: location === "/services/personal-trainer",
+            },
+            {
+              title: "Physiotherapy",
+              object_slug: "services/physiotherapy",
+              isSubCurrent: location === "/services/physiotherapy",
+            },
+            {
+              title: "Counseling",
+              object_slug: "services/counseling",
+              isSubCurrent: location === "/services/counseling",
+            },
+          ]}
+          currentPageSlug={currentPageSlug}
+          location={location}
+        />
+      )}
     </MobileItemStyled>
   )
 }

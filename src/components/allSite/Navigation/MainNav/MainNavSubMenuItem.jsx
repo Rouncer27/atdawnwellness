@@ -6,23 +6,22 @@ const MainNavSubMenuItemStyled = styled.li`
   width: 100%;
   color: ${props => props.theme.black};
   font-family: ${props => props.theme.fontSec};
-  font-weight: 500;
+  font-weight: 300;
   font-size: 1.4rem;
-  text-align: left;
+  text-align: center;
 
   a.sub-menu-link {
     display: block;
     width: 100%;
-    color: ${props => props.theme.black};
+    font-weight: 300;
+    color: ${props => props.theme.white};
     padding: 0.5rem 1rem;
-    background: ${props =>
-      props.isCurrentSub ? props.theme.colorPrim : "transparent"};
+    color: ${props =>
+      props.isCurrentSub ? props.theme.black : props.theme.white};
+    cursor: ${props => (props.isCurrentSub ? "default" : "pointer")};
 
     &:hover {
-      background: ${props =>
-        props.isCurrentSub
-          ? props.theme.colorPrim
-          : props => props.theme.colorSec};
+      color: ${props => props.theme.black};
     }
   }
 `
@@ -30,6 +29,7 @@ const MainNavSubMenuItemStyled = styled.li`
 const MainNavSubMenuItem = ({
   currentPageSlug,
   objectSlug,
+  isSubCurrent,
   title,
   location,
 }) => {
@@ -39,8 +39,8 @@ const MainNavSubMenuItem = ({
       ? true
       : false
   return (
-    <MainNavSubMenuItemStyled isCurrentSub={isCurrentSub}>
-      <Link className="sub-menu-link" to={`/${currentPageSlug}/${objectSlug}`}>
+    <MainNavSubMenuItemStyled isCurrentSub={isSubCurrent}>
+      <Link className="sub-menu-link" to={`/${objectSlug}`}>
         {title}
       </Link>
     </MainNavSubMenuItemStyled>
