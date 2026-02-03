@@ -1,3 +1,4 @@
+const slugify = require("slugify")
 const path = require(`path`)
 
 exports.onCreateWebpackConfig = ({
@@ -76,6 +77,17 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+
+        services: allWordpressAcfService {
+          edges {
+            node {
+              wordpress_id
+              acf {
+                service_title
+              }
+            }
+          }
+        }
       }
     `)
 
@@ -135,6 +147,23 @@ exports.createPages = async ({ graphql, actions }) => {
           },
         })
       }
+    })
+
+    const services = data.services.edges
+    services.forEach(({ node }) => {
+      const slug = slugify(node.acf.service_title, {
+        lower: true,
+        strict: true,
+        trim: true,
+      })
+
+      createPage({
+        path: `/services/${slug}`,
+        component: path.resolve(`./src/templates/servicePost.js`),
+        context: {
+          id: node.wordpress_id,
+        },
+      })
     })
   } catch (err) {
     console.log("Error retrieving WordPress data", err)

@@ -5,16 +5,14 @@ import SEO from "../components/allSite/seo/seo"
 
 import TopQuote from "../components/shared/TopQuote"
 import IntroSec from "../components/servicesPage/IntroSec"
-import ServicesDes from "../components/servicesPage/ServicesDes"
-import ServicesIcons from "../components/servicesPage/ServicesIcons"
+import KeyServices from "../components/servicesPage/KeyServices"
 import Testimonials from "../components/shared/Testimonials"
 
 const Services = props => {
   const {
     topQuote,
     introContent,
-    servicsDescriptions,
-    servicesIcons,
+    keyServices,
     testimonials,
     seoInfo,
   } = props.data
@@ -28,8 +26,7 @@ const Services = props => {
       />
       <TopQuote data={topQuote} />
       <IntroSec data={introContent} />
-      <ServicesDes data={servicsDescriptions} />
-      <ServicesIcons data={servicesIcons} />
+      <KeyServices data={keyServices} />
       <Testimonials data={testimonials} />
     </Layout>
   )
@@ -61,6 +58,26 @@ export const query = graphql`
         _adw_ser_intro_title
         _adw_ser_side_title
         _adw_ser_content
+      }
+    }
+
+    keyServices: allWordpressAcfService {
+      edges {
+        node {
+          acf {
+            service_title
+            featured_image {
+              alt_text
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1000) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
 

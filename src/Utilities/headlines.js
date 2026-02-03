@@ -56,3 +56,14 @@ export const headlineFour = `
     ine-height: 1.33;
     letter-spacing: normal;
 `
+
+export const headlineFive = `
+    ${fontSizer(3, 5.5, 76.8, 150, 2.4)}
+    color: ${colors.black}
+    font-family: ${fonts.fontSecondary};
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    line-height: 1.13;
+  `

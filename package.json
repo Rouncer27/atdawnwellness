@@ -35,6 +35,7 @@
     "react-spring": "^8.0.27",
     "scrollmagic": "^2.0.8",
     "slick-carousel": "^1.8.1",
+    "slugify": "^1.6.6",
     "styled-components": "^4.4.1",
     "styled-normalize": "^8.0.6"
   },
