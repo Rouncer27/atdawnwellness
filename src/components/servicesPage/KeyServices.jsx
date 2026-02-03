@@ -6,8 +6,8 @@ import { Link } from "gatsby"
 import slugify from "slugify"
 
 const KeyServices = ({ data }) => {
-  const services = data.edges.reverse()
-  console.log("Hello World: ", services)
+  const services = data.edges
+  services.sort((a, b) => a.node.acf.post_position - b.node.acf.post_position)
 
   return (
     <ServicesDesSection>

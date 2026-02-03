@@ -66,6 +66,7 @@ export const query = graphql`
         node {
           acf {
             service_title
+            post_position
             featured_image {
               alt_text
               localFile {
