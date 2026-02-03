@@ -97,6 +97,7 @@ export const query = graphql`
       acf {
         _adw_pbi_main_title
         _adw_pbi_team {
+          team
           name
           sub_title
           image {

@@ -11,6 +11,7 @@ import {
   bodyCopy,
   headlineOne,
   colors,
+  headlineTwo,
 } from "../../Utilities"
 
 const settings = {
@@ -26,6 +27,7 @@ const settings = {
   centerPadding: "0px",
   arrows: false,
   dots: false,
+  adaptiveHeight: true,
 }
 
 const PeopleBehindSection = styled.section`
@@ -34,8 +36,16 @@ const PeopleBehindSection = styled.section`
   }
 
   .main-title {
+    width: 100%;
+    text-align: center;
+
     h2 {
       ${headlineOne};
+      color: #437a7e;
+    }
+
+    h3 {
+      ${headlineTwo};
       color: #437a7e;
     }
   }
@@ -171,19 +181,81 @@ const PeopleBehind = ({ data }) => {
   const title = data.acf._adw_pbi_main_title
   const navImg = useRef(null)
   const bioSlider = useRef(null)
+  const navImgMassage = useRef(null)
+  const bioSliderMassage = useRef(null)
 
-  useEffect(() => addClickEventForNav(navImg, bioSlider), [])
-  useEffect(() => handleOnChangeSlider(navImg, bioSlider), [])
+  useEffect(() => {
+    addClickEventForNav(navImgMassage, bioSliderMassage)
+    addClickEventForNav(navImg, bioSlider)
+  }, [])
+  useEffect(() => {
+    handleOnChangeSlider(navImgMassage, bioSliderMassage)
+    handleOnChangeSlider(navImg, bioSlider)
+  }, [])
+
+  // ✅ Filter for massage team
+  const massageTeam = people.filter(person => person.team === "massage")
+
+  // ✅ Filter for specialty team
+  const specialtyTeam = people.filter(person => person.team === "specialty")
 
   return (
     <PeopleBehindSection>
       <div className="wrapper">
         <div className="main-title">
           <h2>{title}</h2>
+          <h3>Massage Team</h3>
         </div>
         <div>
+          <PersonImageContainer ref={navImgMassage}>
+            {massageTeam.map((person, index) => {
+              return (
+                <PersonImage
+                  className={`nav-image${index === 0 ? " navActive" : ""}`}
+                  data-index={`${index}`}
+                  key={index}
+                >
+                  <Img
+                    fluid={person.image.localFile.childImageSharp.fluid}
+                    alt={person.name}
+                  />
+                </PersonImage>
+              )
+            })}
+          </PersonImageContainer>
+          <Slider
+            className="bioSlider"
+            {...settings}
+            ref={bioSliderMassage}
+            afterChange={() => {
+              handleOnChangeSlider(navImg)
+            }}
+          >
+            {massageTeam.map((person, index) => {
+              return (
+                <PersonBio className="single-bio" key={index}>
+                  <div>
+                    <h3>{person.name}</h3>
+                    {person.sub_title && (
+                      <p className="sub-title-cred">{person.sub_title}</p>
+                    )}
+                  </div>
+                  <div
+                    className="bio-body"
+                    dangerouslySetInnerHTML={{ __html: person.bio }}
+                  />
+                </PersonBio>
+              )
+            })}
+          </Slider>
+
+          <div className="wrapper">
+            <div className="main-title">
+              <h3>Specialty Service Team</h3>
+            </div>
+          </div>
           <PersonImageContainer ref={navImg}>
-            {people.map((person, index) => {
+            {specialtyTeam.map((person, index) => {
               return (
                 <PersonImage
                   className={`nav-image${index === 0 ? " navActive" : ""}`}
@@ -206,7 +278,7 @@ const PeopleBehind = ({ data }) => {
               handleOnChangeSlider(navImg)
             }}
           >
-            {people.map((person, index) => {
+            {specialtyTeam.map((person, index) => {
               return (
                 <PersonBio className="single-bio" key={index}>
                   <div>
