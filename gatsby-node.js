@@ -78,6 +78,15 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
 
+        posts: allWordpressPost {
+          edges {
+            node {
+              slug
+              wordpress_id
+            }
+          }
+        }
+
         services: allWordpressAcfService {
           edges {
             node {
@@ -155,6 +164,19 @@ exports.createPages = async ({ graphql, actions }) => {
           },
         })
       }
+    })
+
+    const posts = data.posts.edges
+    posts.forEach(({ node }, index) => {
+      createPage({
+        path: `/resources/${node.slug}/`,
+        component: path.resolve("./src/templates/post.js"),
+        context: {
+          slug: node.slug,
+          prev: index === 0 ? null : posts[index - 1].node.slug,
+          next: index === posts.length - 1 ? null : posts[index + 1].node.slug,
+        },
+      })
     })
 
     const services = data.services.edges

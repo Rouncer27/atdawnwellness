@@ -81,7 +81,7 @@ const Articles = ({ data, categories }) => {
                     />
                   </div>
                   <div className="post-link">
-                    <Link to="/resources">Read More</Link>
+                    <Link to={`/resources/${post.node.slug}`}>Read More</Link>
                   </div>
                 </div>
               )
