@@ -2,19 +2,10 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/allSite/seo/seo"
 import TopQuote from "../components/shared/TopQuote"
-
-import styled from "styled-components"
-
-import {
-  bodyCopy,
-  colors,
-  headlineFive,
-  headlineTwo,
-  medWrapper,
-} from "../Utilities"
+import Articles from "../components/resourcesPage/Articles"
 
 const resources = props => {
-  const { topQuote, seoInfo } = props.data
+  const { topQuote, posts, seoInfo } = props.data
   return (
     <Layout location={props.location.pathname}>
       <SEO
@@ -24,32 +15,10 @@ const resources = props => {
         location={props.location.pathname}
       />
       <TopQuote data={topQuote} />
-      <StyledSection>
-        <div className="resources-wrapper">
-          <div className="resources-title">
-            <h1>Resources</h1>
-          </div>
-          <div>
-            <p>Resources section coming soon!</p>
-          </div>
-        </div>
-      </StyledSection>
+      <Articles data={posts} />
     </Layout>
   )
 }
-
-const StyledSection = styled.section`
-  padding: 3rem 0;
-
-  .resources-wrapper {
-    ${medWrapper};
-  }
-
-  .resources-title {
-    width: 100%;
-    text-align: center;
-  }
-`
 
 export const query = graphql`
   query resourcesPage($id: Int!) {
@@ -78,6 +47,7 @@ export const query = graphql`
           title
           slug
           acf {
+            post_excerpt
             post_featured_image {
               alt_text
               localFile {
