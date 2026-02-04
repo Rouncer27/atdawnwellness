@@ -71,6 +71,31 @@ export const query = graphql`
         _adw_toq_author
       }
     }
+
+    posts: allWordpressPost {
+      edges {
+        node {
+          title
+          slug
+          acf {
+            post_featured_image {
+              alt_text
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1000) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+            service_category {
+              post_name
+              post_title
+            }
+          }
+        }
+      }
+    }
   }
 `
 
