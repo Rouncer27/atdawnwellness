@@ -5,7 +5,7 @@ import TopQuote from "../components/shared/TopQuote"
 import Articles from "../components/resourcesPage/Articles"
 
 const resources = props => {
-  const { topQuote, posts, seoInfo } = props.data
+  const { topQuote, posts, categories, seoInfo } = props.data
   return (
     <Layout location={props.location.pathname}>
       <SEO
@@ -15,7 +15,7 @@ const resources = props => {
         location={props.location.pathname}
       />
       <TopQuote data={topQuote} />
-      <Articles data={posts} />
+      <Articles data={posts} categories={categories} />
     </Layout>
   )
 }
@@ -45,6 +45,10 @@ export const query = graphql`
       edges {
         node {
           title
+          categories {
+            slug
+            name
+          }
           slug
           acf {
             post_excerpt
@@ -63,6 +67,15 @@ export const query = graphql`
               post_title
             }
           }
+        }
+      }
+    }
+
+    categories: allWordpressCategory {
+      edges {
+        node {
+          slug
+          name
         }
       }
     }

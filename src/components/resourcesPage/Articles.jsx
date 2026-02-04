@@ -1,44 +1,98 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
-import { bodyCopy, colors, headlineTwo, medWrapper } from "../../Utilities"
+import {
+  bodyCopy,
+  bodyCopyTwo,
+  colors,
+  headlineOne,
+  headlineTwo,
+  medWrapper,
+} from "../../Utilities"
 import { Link } from "gatsby"
 
-const Articles = ({ data }) => {
-  console.log(data)
+const Articles = ({ data, categories }) => {
+  const [activeCategory, setActiveCategory] = useState("")
+
   const posts = data.edges
+  const cats = categories.edges
+
+  const activePosts =
+    activeCategory === ""
+      ? posts
+      : posts.filter(post =>
+          post.node.categories.some(cat => cat.slug === activeCategory)
+        )
+
+  const handleChangeCategory = slug => {
+    setActiveCategory(slug)
+  }
+
   return (
     <StyledSection className="articles">
       <div className="wrapper">
+        <div className="articles-title">
+          <h2>Resources</h2>
+        </div>
+        <div className="articles-navigation">
+          <ul>
+            <li
+              onClick={() => handleChangeCategory("")}
+              className={activeCategory === "" ? "active" : ""}
+            >
+              All <span> | </span>
+            </li>
+            {cats.map((cat, index) => {
+              return (
+                <li
+                  key={cat.node.slug}
+                  onClick={() => handleChangeCategory(cat.node.slug)}
+                  className={activeCategory === cat.node.slug ? "active" : ""}
+                >
+                  {cat.node.name}
+                  {cats.length > index + 1 ? <span> | </span> : null}
+                </li>
+              )
+            })}
+          </ul>
+        </div>
         <div className="articles-wrapper">
-          {posts.map((post, index) => {
-            return (
-              <div className="post" key={index}>
-                <div className="post-featured-image">
-                  <Img
-                    fluid={
-                      post.node.acf.post_featured_image.localFile
-                        .childImageSharp.fluid
-                    }
-                    alt={post.node.acf.post_featured_image.alt_text}
-                  />
+          {activePosts.length > 0 ? (
+            activePosts.map((post, index) => {
+              return (
+                <div className="post" key={index}>
+                  <div className="post-featured-image">
+                    <Img
+                      fluid={
+                        post.node.acf.post_featured_image.localFile
+                          .childImageSharp.fluid
+                      }
+                      alt={post.node.acf.post_featured_image.alt_text}
+                    />
+                  </div>
+                  <div className="post-title">
+                    <h2 dangerouslySetInnerHTML={{ __html: post.node.title }} />
+                  </div>
+                  <div className="post-excerpt">
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: post.node.acf.post_excerpt,
+                      }}
+                    />
+                  </div>
+                  <div className="post-link">
+                    <Link to="/resources">Read More</Link>
+                  </div>
                 </div>
-                <div className="post-title">
-                  <h2 dangerouslySetInnerHTML={{ __html: post.node.title }} />
-                </div>
-                <div className="post-excerpt">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: post.node.acf.post_excerpt,
-                    }}
-                  />
-                </div>
-                <div className="post-link">
-                  <Link to="/resources">Read More</Link>
-                </div>
+              )
+            })
+          ) : (
+            <div className="articles-no-found">
+              <div>
+                <p>No Posts in your selected Category - {activeCategory}</p>
               </div>
-            )
-          })}
+            </div>
+          )}
         </div>
       </div>
     </StyledSection>
@@ -50,6 +104,44 @@ const StyledSection = styled.section`
 
   .wrapper {
     ${medWrapper}
+  }
+
+  .articles-title {
+    width: 100%;
+
+    h2 {
+      ${headlineOne};
+      color: ${colors.colorPrimary};
+    }
+  }
+
+  .articles-navigation {
+    width: 100%;
+    margin-bottom: 2.5rem;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+
+      li {
+        ${bodyCopyTwo};
+        color: ${colors.colorPrimary};
+        cursor: pointer;
+        padding-left: 0.5rem;
+        text-transform: uppercase;
+
+        &.active {
+          color: ${colors.colorAccent};
+          cursor: default;
+
+          span {
+            color: ${colors.colorPrimary};
+          }
+        }
+      }
+    }
   }
 
   .articles-wrapper {
@@ -106,6 +198,17 @@ const StyledSection = styled.section`
           color: ${colors.colorAccent};
         }
       }
+    }
+  }
+
+  .articles-no-found {
+    width: 100%;
+    margin: 5rem auto 2rem;
+    text-align: center;
+
+    p {
+      ${headlineTwo};
+      color: ${colors.colorPrimary};
     }
   }
 `
