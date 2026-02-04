@@ -36,8 +36,6 @@ const MobileSubMenuItem = props => {
   //     ? true
   //     : false
 
-  console.log("isCurrentSub", isCurrentSub)
-
   return (
     <MobileSubMenuItemStyled
       className="sub-menu-item"
