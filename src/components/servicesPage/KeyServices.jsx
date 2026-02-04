@@ -71,8 +71,12 @@ const ServicesDesSection = styled.section`
   }
 
   .services-item {
-    width: calc(33.333333% - 2rem);
-    margin: 3rem 1rem;
+    width: calc(100%);
+
+    @media (min-width: 768px) {
+      width: calc(33.333333% - 2rem);
+      margin: 3rem 1rem;
+    }
 
     &-image {
     }
