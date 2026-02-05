@@ -30,7 +30,13 @@ const PostHeader = ({ data }) => {
 }
 
 const StyledHeader = styled.section`
-  padding: 25rem 0 2rem;
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
+
+  @media (min-width: 1025px) {
+    padding: 25rem 0 2rem;
+  }
 
   .header-wrapper {
     ${medWrapper}

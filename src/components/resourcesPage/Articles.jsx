@@ -132,6 +132,14 @@ const StyledSection = styled.section`
         padding-left: 0.5rem;
         text-transform: uppercase;
 
+        @media (max-width: 767px) {
+          width: 100%;
+
+          span {
+            display: none;
+          }
+        }
+
         &.active {
           color: ${colors.colorAccent};
           cursor: default;
@@ -153,6 +161,7 @@ const StyledSection = styled.section`
 
   .post {
     width: calc(100%);
+    margin-bottom: 2.5rem;
 
     @media (min-width: 768px) {
       width: calc(33.333333% - 2rem);
