@@ -9,7 +9,8 @@ import Team from "../components/ServicePost/Team"
 import RelatedArticles from "../components/ServicePost/RelatedArticles"
 
 const servicePost = props => {
-  const { topQuote, intro, mainContent, team, seoInfo } = props.data
+  const { topQuote, intro, mainContent, team, posts, seoInfo } = props.data
+
   return (
     <Layout location={props.location.pathname}>
       <SEO
@@ -22,7 +23,7 @@ const servicePost = props => {
       <Intro data={intro} />
       <MainContent data={mainContent} />
       <Team data={team} />
-      <RelatedArticles />
+      <RelatedArticles posts={posts} serviceTitle={intro.acf.service_title} />
     </Layout>
   )
 }
@@ -77,6 +78,36 @@ export const query = graphql`
       acf {
         about_team_title
         about_team_content
+      }
+    }
+
+    posts: allWordpressPost {
+      edges {
+        node {
+          title
+          categories {
+            slug
+            name
+          }
+          slug
+          acf {
+            post_excerpt
+            post_featured_image {
+              alt_text
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1000) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+            service_category {
+              post_name
+              post_title
+            }
+          }
+        }
       }
     }
   }

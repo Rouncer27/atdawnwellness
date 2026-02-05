@@ -119,6 +119,11 @@ const MobileItem = props => {
               object_slug: "services/counseling",
               isSubCurrent: location === "/services/counseling",
             },
+            {
+              title: "Herbology",
+              object_slug: "services/herbology",
+              isSubCurrent: location === "/services/herbology",
+            },
           ]}
           currentPageSlug={currentPageSlug}
           location={location}
