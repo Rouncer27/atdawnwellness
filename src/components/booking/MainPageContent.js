@@ -15,7 +15,6 @@ import {
 } from "../../Utilities"
 
 const MainPageContent = ({ data }) => {
-  console.log("Data", data)
   return (
     <StyledSection>
       <div className="wrapper">

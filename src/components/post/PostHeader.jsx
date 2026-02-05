@@ -4,7 +4,6 @@ import styled from "styled-components"
 import { bodyCopy, colors, headlineFive, medWrapper } from "../../Utilities"
 
 const PostHeader = ({ data }) => {
-  console.log("data", data)
   return (
     <StyledHeader>
       <div className="header-wrapper">

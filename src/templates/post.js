@@ -7,7 +7,6 @@ import PostArticle from "../components/post/PostArticle"
 import PostNav from "../components/post/PostNav"
 
 const post = props => {
-  console.log(props)
   const { postHeader, postArticle, seoInfo } = props.data
 
   return (

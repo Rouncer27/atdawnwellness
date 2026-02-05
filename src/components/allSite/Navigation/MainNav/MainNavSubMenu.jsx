@@ -23,7 +23,6 @@ const MainNavSubMenuStyled = styled.ul`
 `
 
 const MainNavSubMenu = ({ subItems, currentPageSlug, location }) => {
-  console.log("TREVOR subItems:", subItems)
   return (
     <MainNavSubMenuStyled className="main-nav-sub">
       {subItems.map((item, index) => {
