@@ -19,6 +19,7 @@ const MainNavSubMenuItemStyled = styled.li`
     color: ${props =>
       props.isCurrentSub ? props.theme.black : props.theme.white};
     cursor: ${props => (props.isCurrentSub ? "default" : "pointer")};
+    line-height: 1;
 
     &:hover {
       color: ${props => props.theme.black};
