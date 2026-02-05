@@ -36,7 +36,9 @@ const PostNav = ({ prevSlug, nextSlug }) => {
 }
 
 const StyledNavigation = styled.article`
-  margin: 0 auto 5rem;
+  @media (min-width: 768px) {
+    margin: 0 auto 5rem;
+  }
 
   .post-nav-wrapper {
     ${medWrapper}
@@ -46,12 +48,19 @@ const StyledNavigation = styled.article`
 
   ul {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
     text-align: center;
 
     li {
-      width: calc(33.333333%);
+      width: calc(100%);
+      margin-bottom: 2.5rem;
+
+      @media (min-width: 768px) {
+        width: calc(33.333333%);
+        margin-bottom: 0;
+      }
 
       a,
       button {
