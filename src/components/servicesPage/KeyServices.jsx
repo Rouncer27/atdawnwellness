@@ -72,6 +72,7 @@ const ServicesDesSection = styled.section`
 
   .services-item {
     width: calc(100%);
+    margin-bottom: 2.5rem;
 
     @media (min-width: 768px) {
       width: calc(33.333333% - 2rem);

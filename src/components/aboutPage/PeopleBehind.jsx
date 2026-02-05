@@ -52,8 +52,12 @@ const PeopleBehindSection = styled.section`
 
   .bioSlider {
     width: 100%;
-    max-width: 40rem;
+    max-width: 30rem;
     margin: 0 auto;
+
+    @media (min-width: 475px) {
+      max-width: 40rem;
+    }
 
     @media (min-width: 768px) {
       max-width: 60rem;
