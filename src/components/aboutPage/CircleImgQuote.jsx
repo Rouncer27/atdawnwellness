@@ -9,7 +9,7 @@ const CircleImgQuoteSection = styled.div`
   padding: 5rem 0;
 
   @media (min-width: 1025px) {
-    padding: 10rem 0;
+    padding: 2.5rem 0 10rem;
   }
 
   .wrapper {
