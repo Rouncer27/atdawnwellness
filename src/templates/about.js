@@ -33,8 +33,8 @@ const About = props => {
       <DividerImages data={dividerImg} />
       <PeopleBehind data={peopleBehind} />
       <WhereFind data={whereToFind} />
-      <CircleImgQuote data={circleImgQuote} />
       <GalleryLoading data={loadGallery} />
+      <CircleImgQuote data={circleImgQuote} />
     </Layout>
   )
 }
