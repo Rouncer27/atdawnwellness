@@ -12,16 +12,27 @@ import BookNow from "./shared/BookNow"
 
 const Layout = ({ children, location }) => {
   const slug = location.split("/").join("")
-  let displayBookBtn = false
-  if (
-    slug === "" ||
-    slug === "home" ||
-    slug === "contact" ||
-    slug === "services" ||
-    slug === "about-us"
-  ) {
-    displayBookBtn = true
-  }
+  let displayBookBtn = true
+  // if (
+  //   slug === "" ||
+  //   slug === "home" ||
+  //   slug === "contact" ||
+  //   slug === "services" ||
+  //   slug === "servicesmassage-services" ||
+  //   slug === "servicescrainosacral-therapy" ||
+  //   slug === "servicesosteopath" ||
+  //   slug === "serviceslymphatic-drainage" ||
+  //   slug === "servicesacupuncture" ||
+  //   slug === "servicespersonal-trainer" ||
+  //   slug === "servicesphysiotherapy" ||
+  //   slug === "servicescounseling" ||
+  //   slug === "servicesherbology" ||
+  //   slug === "resources" ||
+  //   slug === "gift-cards" ||
+  //   slug === "about-us"
+  // ) {
+  //   displayBookBtn = true
+  // }
 
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
