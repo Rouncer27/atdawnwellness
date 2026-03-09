@@ -49,6 +49,7 @@ const SuccessDisplayStyled = styled.div`
 `
 
 const clearTheForm = (updateFormData, updateFormStatus) => {
+  // ✅ Reset reCAPTCHA
   updateFormData({
     yourName: "",
     yourNumber: "",
@@ -60,6 +61,7 @@ const clearTheForm = (updateFormData, updateFormStatus) => {
     errorWarnDisplay: false,
     success: false,
     errors: [],
+    captachError: false,
   })
 }
 

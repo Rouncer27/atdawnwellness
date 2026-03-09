@@ -54,6 +54,7 @@ const fixTheFormErrors = (stateSetter, formStatus) => {
     submitting: false,
     errorWarnDisplay: false,
     success: false,
+    captachError: false,
   })
 }
 
