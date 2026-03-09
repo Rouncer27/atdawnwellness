@@ -151,6 +151,7 @@ const Feedback = ({ data }) => {
       captachError: false,
     })
 
+    // ✅ reCAPTCHA
     submitTheForm(
       e,
       formId,

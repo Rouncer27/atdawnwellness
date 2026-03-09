@@ -1,10 +1,13 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import Img from "gatsby-image"
+
+// ✅ reCAPTCHA
+import ReCAPTCHA from "react-google-recaptcha"
 import styled from "styled-components"
 
 import InputText from "../allSite/formParts/InputText"
 import InputTextArea from "../allSite/formParts/InputTextArea"
-import { medWrapper, headlineOne, buttonOne } from "../../Utilities"
+import { medWrapper, headlineOne, buttonOne, bodyCopy } from "../../Utilities"
 import { submitTheForm } from "../allSite/formParts/FormUtilities/formFunctions"
 
 // models //
@@ -56,6 +59,20 @@ const LetChatSection = styled.section`
     }
   }
 
+  //  ✅ reCAPTCHA //
+  .captcha-container {
+    width: 100%;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+
+    p {
+      ${bodyCopy};
+      margin: 0;
+      margin-bottom: 0.75rem;
+      color: red;
+    }
+  }
+
   .form-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -81,13 +98,18 @@ const LetChatSection = styled.section`
 `
 
 const LetChat = ({ data }) => {
+  // ✅ reCAPTCHA
+  const recaptchaRef = useRef(null)
+  // ✅ reCAPTCHA
+  const [isCaptchaVerified, setIsCaptchaVerified] = useState(false)
+
   const [formData, updateFormData] = useState({
     yourName: "",
     yourNumber: "",
     yourEmail: "",
     yourMessage: "",
   })
-
+  // ✅ reCAPTCHA
   const [formStatus, updateFormStatus] = useState({
     submitting: false,
     errorWarnDisplay: false,
@@ -96,19 +118,49 @@ const LetChat = ({ data }) => {
     captachError: false,
   })
 
+  // ✅ reCAPTCHA
+  const onChangeRecaptcha = value => {
+    setIsCaptchaVerified(!!value)
+
+    updateFormStatus(prev => ({
+      ...prev,
+      captachError: false,
+    }))
+  }
+
   const handleOnChange = e => {
     updateFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   const handleOnSubmit = (e, formId, formData, updateFormStatus) => {
     e.preventDefault()
+
+    // ✅ reCAPTCHA
+    const recaptchaValue = recaptchaRef.current.getValue()
+    // ✅ reCAPTCHA
+    if (recaptchaValue === "") {
+      updateFormStatus({
+        ...formStatus,
+        captachError: true,
+      })
+      return
+    }
+
     updateFormStatus({
       ...formStatus,
       submitting: true,
       captachError: false,
     })
 
-    submitTheForm(e, formId, formData, updateFormStatus)
+    // ✅ reCAPTCHA
+    submitTheForm(
+      e,
+      formId,
+      formData,
+      updateFormStatus,
+      recaptchaRef,
+      setIsCaptchaVerified
+    )
   }
 
   const title = data.acf._adw_contact_chat_title
@@ -186,8 +238,28 @@ const LetChat = ({ data }) => {
                 rows={5}
                 textColor=""
               />
+              {/*  ✅ reCAPTCHA */}
+              <div className="captcha-container">
+                {formStatus.captachError && (
+                  <p>
+                    The form will not submit until you have checked the
+                    reCAPCHA.
+                  </p>
+                )}
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey={`6LdC54QsAAAAAIp768v0Cgy620ypb8aoXcsNpLjA`}
+                  onChange={onChangeRecaptcha}
+                  onExpired={() => setIsCaptchaVerified(false)}
+                />
+              </div>
               <div className="form-submit">
-                <button>submit</button>
+                <button
+                  disabled={!isCaptchaVerified || formStatus.submitting}
+                  type="submit"
+                >
+                  Submit
+                </button>
               </div>
             </div>
           </form>
