@@ -293,7 +293,7 @@ const PrivacyPolicy = props => {
             </h3>
             <p>
               For support regarding our services, email us at
-              admin@atdawnwellness.ca or, if supported, text "HELP" to our
+              admin@atdawnwellness.ca or, if supported, text \"HELP\" to our
               messages at any time and we will respond with instructions on how
               to unsubscribe. If we include a link in messages we send you from
               At Dawn Wellness, you may also access instructions on how to
@@ -305,7 +305,7 @@ const PrivacyPolicy = props => {
             <p>
               You agree that before changing your mobile number or transferring
               your mobile number to another individual, you will either reply
-              "STOP" from the original number, unsubscribe using the link
+              \"STOP\" from the original number, unsubscribe using the link
               included in our messages (if one is provided), or notify us of
               your old number at admin@atdawnwellness.ca. The duty to inform us
               based on the above events is a condition of using this service to
