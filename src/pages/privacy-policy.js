@@ -234,7 +234,7 @@ const PrivacyPolicy = props => {
             email: dawnie@atdawnwellness.ca
           </p>
 
-          <div>
+          <div className="privacy-contact">
             <p>At Dawn Wellness</p>
             <p>520 1 Ave NE Airdrie AB CA T4B 1R1</p>
             <p>admin@atdawnwellness.ca</p>
