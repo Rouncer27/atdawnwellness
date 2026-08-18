@@ -58,6 +58,7 @@ const PrivacyPolicyStyled = styled.div`
   }
 
    .privacy-contact {
+     margin-bottom: 3rem;
     p {
       margin: 0;
     }
