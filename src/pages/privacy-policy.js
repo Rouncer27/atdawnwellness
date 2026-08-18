@@ -56,6 +56,12 @@ const PrivacyPolicyStyled = styled.div`
       content: "";
     }
   }
+
+   .privacy-contact {
+    p {
+      margin: 0;
+    }
+  }
 `
 
 const PrivacyPolicy = props => {
@@ -74,7 +80,7 @@ const PrivacyPolicy = props => {
         <div>
           <h2>Protecting your personal information</h2>
 
-          <div>
+          <div className="privacy-contact">
             <p>privacy officer: Dawnie McElligott</p>
             <p>At Dawn Wellness</p>
             <p>520 1 Ave NE Airdrie AB CA T4B 1R1</p>
