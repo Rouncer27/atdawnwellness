@@ -73,16 +73,17 @@ const PrivacyPolicy = props => {
         
         <div>
           <h2>Protecting your personal information</h2>
+        
           <div>
-            <p>privacy officer: Dawnie McElligott</p>
-            <div>
+              <p>privacy officer: Dawnie McElligott</p>
               <p>At Dawn Wellness</p>
               <p>520 1 Ave NE Airdrie AB CA T4B 1R1</p>
               <p>admin@atdawnwellness.ca</p>
               <p>403-809-9428</p>
               <p>https://atdawnwellness.ca/privacy-policy</p>
           </div>
-          </div>
+
+              
           <p>
             Your privacy is important to us. It is At Dawn Wellness policy to
             respect your privacy regarding any information we may collect while
