@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/allSite/seo/seo"
 import styled from "styled-components"
+import { standardWrapper, bodyCopy, headlineOne } from "../Utilities"
 
 const SmsPolicy = props => {
   return (
