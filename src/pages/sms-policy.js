@@ -172,7 +172,6 @@ const SmsPolicy = props => {
               continued enrollment following such changes shall constitute your
               acceptance of such changes.
             </p>
-          </div>
         </div>
       </SmsPolicy>
     </Layout>
