@@ -3,68 +3,6 @@ import Layout from "../components/layout"
 import SEO from "../components/allSite/seo/seo"
 import styled from "styled-components"
 
-import {
-  standardWrapper,
-  headlineTwo,
-  bodyCopyOne,
-  headlineOne,
-  colors,
-} from "../Utilities"
-
-const PrivacyPolicyStyled = styled.div`
-  ${standardWrapper};
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-
-  h1,
-  h2 {
-    ${headlineOne};
-    width: 100%;
-    color: #437a7e;
-  }
-
-  h2 {
-    ${headlineTwo};
-    color: #437a7e;
-  }
-
-  p,
-  ul,
-  li {
-    ${bodyCopyOne};
-  }
-
-  ul {
-    margin-bottom: 5rem;
-  }
-
-  li {
-    ${bodyCopyOne};
-    position: relative;
-    margin-bottom: 2rem;
-    padding-left: 1.5rem;
-
-    &::before {
-      display: block;
-      position: absolute;
-      top: 1.05rem;
-      left: 0;
-      width: 1rem;
-      height: 1rem;
-      border-radius: 50%;
-      background-color: ${colors.colorSecondary};
-      content: "";
-    }
-  }
-
-   .privacy-contact {
-     margin-bottom: 3rem;
-    p {
-      margin: 0;
-    }
-  }
-`
-
 const SmsPolicy = props => {
   return (
     <Layout location={props.location.pathname}>
@@ -73,7 +11,7 @@ const SmsPolicy = props => {
         description="Protecting your personal information Your privacy is important to us."
         location={props.location.pathname}
       />
-      <PrivacyPolicyStyled>
+      <div>
           <div>
             <h1>SMS Policy</h1>
           </div>
@@ -173,7 +111,7 @@ const SmsPolicy = props => {
               acceptance of such changes.
             </p>
         </div>
-      </SmsPolicy>
+      </div>
     </Layout>
   )
 }
