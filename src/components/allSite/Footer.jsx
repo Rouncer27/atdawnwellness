@@ -233,6 +233,8 @@ const Footer = () => {
           </div>
 
           <div className="footerCopy">
+            <Link to="/sms-policy">SMS Policy</Link>
+            <span> | </span>
             <Link to="/privacy-policy">Privacy Policy</Link>
             <span> | </span>
             <Link to="/disclaimer">Disclaimer</Link>
