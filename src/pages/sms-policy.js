@@ -4,6 +4,23 @@ import SEO from "../components/allSite/seo/seo"
 import styled from "styled-components"
 import { standardWrapper, bodyCopy, headlineOne } from "../Utilities"
 
+const SmsStyled = styled.div`
+  ${standardWrapper};
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+
+  h1,
+  h2 {
+    ${headlineOne};
+    width: 100%;
+    color: #437a7e;
+  }
+
+  p {
+    ${bodyCopy};
+  }
+`
+
 const SmsPolicy = props => {
   return (
     <Layout location={props.location.pathname}>
