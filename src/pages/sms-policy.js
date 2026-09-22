@@ -178,4 +178,4 @@ const SmsPolicy = props => {
   )
 }
 
-export default PrivacyPolicy
+export default SmsPolicy
