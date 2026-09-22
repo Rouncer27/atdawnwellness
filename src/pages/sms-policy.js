@@ -29,7 +29,7 @@ const SmsPolicy = props => {
         description="Protecting your personal information Your privacy is important to us."
         location={props.location.pathname}
       />
-      <div>
+      <SmsStyled>
           <div>
             <h1>SMS Policy</h1>
           </div>
@@ -129,7 +129,7 @@ const SmsPolicy = props => {
               acceptance of such changes.
             </p>
         </div>
-      </div>
+      </SmsStyled>
     </Layout>
   )
 }
